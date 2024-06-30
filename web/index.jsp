@@ -92,10 +92,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <div class="right-section">
                         <div class="container">
                             <div class="search-place">
-                                <input class="search-bar" type="text" placeholder="Tìm kiếm">
+                              <form id="searchForm" action="SearchServlet" method="get"> <!-- URL phải khớp với @WebServlet("/search") -->
+                                <input id="searchInput" class="search-bar" type="text" name="query" placeholder="Tìm kiếm">
                                 <button type="submit" class="search-button">
-                                    <img class="search-icon" src="icons/search.svg" alt="#">
+                                  <img class="search-icon" src="icons/search.svg" alt="#">
                                 </button>
+                              </form>
                             </div>
                             <a href="include/sigin.jsp">
                                 <img class="icon-head" src="icons/user.png" alt="#">
