@@ -36,7 +36,7 @@ public class SearchServlet extends HttpServlet {
         request.setAttribute("searchResults", searchResults);
 
         // Chuyển tiếp yêu cầu đến searchProducts.jsp
-        RequestDispatcher dispatcher = request.getRequestDispatcher("searchProducts.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("include/searchProducts.jsp");
         dispatcher.forward(request, response);
     }
 
