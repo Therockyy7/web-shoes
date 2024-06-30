@@ -25,6 +25,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
         <link rel="shortcut icon" href="image/logo/logoSHop.png" type="image/x-icon">
 
+        
         <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="style/header.css">
         <link rel="stylesheet" href="style/header-video-trailer.css">
@@ -179,14 +180,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             </div>
                         </div>
                     </div>
-                    <% }
-                    } else { %>
-                    <p>Không tìm thấy kết quả nào.</p>
-                    <% }%>
-                </div>
-            </div>
-                
-        </section>
+            <% }
+            } else { %>
+                <p>Không tìm thấy kết quả nào.</p>
+            <% } %>
+        </div>
+    </div>
+</section>
 
         <style>
             .product-list {
