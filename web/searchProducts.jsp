@@ -161,7 +161,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <div class="card-body">
                                 <h5 class="card-title"><%= product.getName()%></h5>
                                 <p class="card-text"><%= product.getDescription()%></p>
-                                <p class="card-text">Price: $<%= product.getPrice()%>/kg</p>
+                                <p class="card-text">Price: $<%= product.getPrice()%>/VNĐ</p>
                                 <a href="#" class="btn btn-primary">Add to Cart</a>
                             </div>
                         </div>
@@ -175,10 +175,44 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         </section>
 
         <style>
+            .product-list {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .product-item {
+                flex: 0 0 calc(25% - 1rem); /* 25% width for each item, adjust margin as needed */
+                margin-bottom: 1rem; /* Optional margin between items */
+                box-sizing: border-box;
+            }
+            .card-body {
+                height: 200px; /* Chiều cao cố định */
+                overflow: hidden; /* Ẩn phần nội dung thừa */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .card-title {
+                font-size: 1.25rem;
+                font-weight: bold;
+                white-space: nowrap; /* Ngăn không cho từ xuống dòng */
+                overflow: hidden; /* Ẩn phần nội dung thừa */
+                text-overflow: ellipsis; /* Hiển thị ... khi vượt quá */
+            }
+
+            .card-text {
+                overflow: hidden; /* Ẩn phần nội dung thừa */
+                text-overflow: ellipsis; /* Hiển thị ... khi vượt quá */
+                display: -webkit-box;
+                -webkit-line-clamp: 1; /* Giới hạn số dòng tối đa hiển thị */
+                -webkit-box-orient: vertical;
+            }
+
             .card-img-top {
                 width: 100%;
-                height: 400px; /* Điều chỉnh chiều cao cố định của ảnh */
-                object-fit: cover; /* Đảm bảo ảnh không bị méo khi co dãn */
+                height: 400px; /* Chiều cao cố định cho hình ảnh */
+                object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
             }
         </style>
 
