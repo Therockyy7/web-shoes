@@ -20,8 +20,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
         <link rel="shortcut icon" href="image/logo/logoSHop.png" type="image/x-icon">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
+        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="style/header.css">
         <link rel="stylesheet" href="style/header-video-trailer.css">
         <link rel="stylesheet" href="style/middle.css">
@@ -95,9 +95,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                               <form id="searchForm" action="SearchServlet" method="get"> <!-- URL phải khớp với @WebServlet("/search") -->
                                 <input id="searchInput" class="search-bar" type="text" name="query" placeholder="Tìm kiếm">
                                 <button type="submit" class="search-button">
-                                  <img class="search-icon" src="icons/search.svg" alt="#">
+                                    <img class="search-icon" src="icons/search.svg" alt="#">
                                 </button>
-                              </form>
+                            </form>
                             </div>
                             <a href="include/sigin.jsp">
                                 <img class="icon-head" src="icons/user.png" alt="#">

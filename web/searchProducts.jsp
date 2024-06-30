@@ -25,9 +25,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
         <link rel="shortcut icon" href="image/logo/logoSHop.png" type="image/x-icon">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
+        
+        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="style/header.css">
         <link rel="stylesheet" href="style/header-video-trailer.css">
         <link rel="stylesheet" href="style/middle.css">
@@ -102,7 +101,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <div class="right-section">
                         <div class="container">
                             <div class="search-place">
-                                <form id="searchForm" action="search" method="get"> <!-- URL phải khớp với @WebServlet("/search") -->
+                                <form id="searchForm" action="SearchServlet" method="get"> <!-- URL phải khớp với @WebServlet("/search") -->
                                     <input id="searchInput" class="search-bar" type="text" name="query" placeholder="Tìm kiếm">
                                     <button type="submit" class="search-button">
                                         <img class="search-icon" src="icons/search.svg" alt="#">
@@ -149,15 +148,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         </div>
             
         <section class="middle">
-    <div class="container-middle">
-        <div class="product-list">
-            <!-- Loop through each product and generate product card -->
-            <% ArrayList<Products> products = (ArrayList<Products>) request.getAttribute("searchResults");
-            if (products != null) {
-                for (int i = 0; i < products.size(); i++) {
-                    Products product = products.get(i); %>
-                    <div class="product-item">
-                        <div class="card mb-4">
+            <div class="container-middle">
+                <div class="row">
+                    <!-- Loop through each product and generate product card -->
+                    <% ArrayList<Products> products = (ArrayList<Products>) request.getAttribute("searchResults");
+                        if (products != null) {
+                            for (int i = 0; i < products.size(); i++) {
+                            Products product = products.get(i);%>
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100">
                             <img src="<%= product.getImageURL()%>" class="card-img-top fixed-size-img" alt="<%= product.getName()%>">
                             <div class="card-body">
                                 <h5 class="card-title"><%= product.getName()%></h5>
@@ -167,21 +166,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             </div>
                         </div>
                     </div>
-            <% }
-            } else { %>
-                <p>Không tìm thấy kết quả nào.</p>
-            <% } %>
-        </div>
-    </div>
-</section>
+                    <% }
+                } else { %>
+                    <p>Không tìm thấy kết quả nào.</p>
+                    <% }%>
+                </div>
+            </div>
+        </section>
 
-<style>
-    .card-img-top {
-        width: 100%;
-        height: 400px; /* Điều chỉnh chiều cao cố định của ảnh */
-        object-fit: cover; /* Đảm bảo ảnh không bị méo khi co dãn */
-    }
-</style>
+        <style>
+            .card-img-top {
+                width: 100%;
+                height: 400px; /* Điều chỉnh chiều cao cố định của ảnh */
+                object-fit: cover; /* Đảm bảo ảnh không bị méo khi co dãn */
+            }
+        </style>
 
         <footer>
             <div class="description">
