@@ -149,15 +149,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             
         <section class="middle">
             <div class="container-middle">
+
+                <div class="tab-item" style="padding-bottom: 40px;">
+                    <div class="link-item">
+                        <a href="#">Hàng mới về</a>
+                        <a href="#">Premium</a>
+                        <a href="#">Giày dép hè</a>
+                        <a href="#">Summer outfit</a>
+                        <a href="#">Discount</a>
+                        <a href="#">xem Thêm</a>
+
+                    </div>
+
+                </div>
+
                 <div class="row">
                     <!-- Loop through each product and generate product card -->
                     <% ArrayList<Products> products = (ArrayList<Products>) request.getAttribute("searchResults");
                         if (products != null) {
                             for (int i = 0; i < products.size(); i++) {
-                            Products product = products.get(i);%>
+                            Products product = products.get(i);
+                            String[] url = product.getImageURL().split(";");
+                    %>
                     <div class="col-md-3 mb-4">
                         <div class="card h-100">
-                            <img src="<%= product.getImageURL()%>" class="card-img-top fixed-size-img" alt="<%= product.getName()%>">
+                            <img src="<%= url[0]%>" class="card-img-top fixed-size-img" alt="<%= product.getName()%>">
                             <div class="card-body">
                                 <h5 class="card-title"><%= product.getName()%></h5>
                                 <p class="card-text"><%= product.getDescription()%></p>
