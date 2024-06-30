@@ -25,7 +25,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
         <link rel="shortcut icon" href="image/logo/logoSHop.png" type="image/x-icon">
 
-        
         <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="style/header.css">
         <link rel="stylesheet" href="style/header-video-trailer.css">
@@ -146,7 +145,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 </button>
             </div>
         </div>
-            
+
         <section class="middle">
             <div class="container-middle">
 
@@ -158,9 +157,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         <a href="#">Summer outfit</a>
                         <a href="#">Discount</a>
                         <a href="#">xem Thêm</a>
-
                     </div>
-
                 </div>
 
                 <div class="row">
@@ -168,8 +165,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <% ArrayList<Products> products = (ArrayList<Products>) request.getAttribute("searchResults");
                         if (products != null) {
                             for (int i = 0; i < products.size(); i++) {
-                            Products product = products.get(i);
-                            String[] url = product.getImageURL().split(";");
+                                Products product = products.get(i);
+                                String[] url = product.getImageURL().split(";");
                     %>
                     <div class="col-md-3 mb-4">
                         <div class="card h-100">
@@ -183,11 +180,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         </div>
                     </div>
                     <% }
-                } else { %>
+                    } else { %>
                     <p>Không tìm thấy kết quả nào.</p>
                     <% }%>
                 </div>
             </div>
+                
         </section>
 
         <style>
