@@ -1,30 +1,24 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
-<%@page contentType="text/html" pageEncoding="utf-8" %>
-<%@ page import="model.Products"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="model.Products"%>
 
+<%
+    Products product = (Products) request.getAttribute("product");
+    String[] url = product.getImageURL().split(";");
+%>
+
+<html>
     <head>
         <title>Vike Online - Shopping</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
-              rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <!-- UIkit CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/css/uikit.min.css" />
-
-
         <link rel="shortcut icon" href="image/logo/logoSHop.png" type="image/x-icon">
-
         <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="style/header.css">
         <link rel="stylesheet" href="style/header-video-trailer.css">
@@ -34,7 +28,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <link rel="stylesheet" href="style/footer.css">
         <link rel="stylesheet" href="style/card.css">
     </head>
-
     <body>
         <!-- Header -->
         <div class="header">
@@ -49,16 +42,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     </div>
                 </div>
                 <div class="head-side-2">
-
                     <div class="text">
                         <h2>TRẢ HÀNG DỄ DÀNG</h2>
                         <p class="content">
-                            Nếu bạn không hài lòng với đơn hàng của mình, bạn có thể được hoàn lại tiền. Vui lòng xem Chính Sách Trả
-                            Hàng của chúng tôi để biết thêm chi tiết.
+                            Nếu bạn không hài lòng với đơn hàng của mình, bạn có thể được hoàn lại tiền. Vui lòng xem Chính Sách Trả Hàng của chúng tôi để biết thêm chi tiết.
                         </p>
-                        <a href="#" class="link">
-                            TRẢ HÀNG DỄ DÀNG
-                        </a>
+                        <a href="#" class="link">TRẢ HÀNG DỄ DÀNG</a>
                     </div>
                     <div class="text">
                         <div class="btn_two">
@@ -68,17 +57,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         </div>
                         <h2>GIAO HÀNG MIỄN PHÍ CHO THÀNH VIÊN CỦA ADICLUB</h2>
                         <p class="content">
-                            Đăng ký thành viên adiClub để hưởng thụ dịch vụ giao hàng miễn phí! Hoặc bạn chỉ được nhận ưu đãi miễn phí
-                            giao hàng với hóa đơn có trị giá ít nhất 1.6 triệu đồng
-
+                            Đăng ký thành viên adiClub để hưởng thụ dịch vụ giao hàng miễn phí! Hoặc bạn chỉ được nhận ưu đãi miễn phí giao hàng với hóa đơn có trị giá ít nhất 1.6 triệu đồng.
                         </p>
-                        <a href="#" class="link">
-                            THAM GIA NGAY
-                        </a>
+                        <a href="#" class="link">THAM GIA NGAY</a>
                     </div>
                 </div>
             </div>
-
             <div class="navbar">
                 <div class="container">
                     <div class="left-section">
@@ -86,7 +70,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <img src="image/logo/logo_title.png" alt="#">
                         </a>
                     </div>
-                    <div class="middle-section ">
+                    <div class="middle-section">
                         <nav>
                             <ul>
                                 <li><a href="include/nam.jsp">Nam</a></li>
@@ -95,12 +79,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                 <li><a href="include/all.jsp">Tất cả</a></li>
                             </ul>
                         </nav>
-
                     </div>
                     <div class="right-section">
                         <div class="container">
                             <div class="search-place">
-                                <form id="searchForm" action="SearchServlet" method="get"> 
+                                <form id="searchForm" action="SearchServlet" method="get"> <!-- URL phải khớp với @WebServlet("/search") -->
                                     <input id="searchInput" class="search-bar" type="text" name="query" placeholder="Tìm kiếm">
                                     <button type="submit" class="search-button">
                                         <img class="search-icon" src="icons/search.svg" alt="#">
@@ -122,113 +105,164 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                 <div class="tool-shop">Túi của bạn trống</div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
-            </div>
-
-            <!-- trailer-head -->
-            <div class="trailer-video">
-                <div class="content-video">
-                    <h1>YOU GOT THIS</h1>
-                    <p>Khi bạn chơi không chút kỳ vọng, áp lực không thể chiếm lĩnh</p>
-                    <a href="#">KHÁM PHÁ THÊM</a>
-                </div>
-                <video class="video-trailer" src="video/290174dd-91ef-4270-b067-dc1707ce7435.mp4" loop muted autoplay></video>
-                <button class="playPause" onclick="playPause()">
-                    <i class="situation-video fa fa-play " aria-hidden="true"></i>
-                </button>
-                <button class="mute muted" onclick="volume()">
-                    <div class="slash"></div>
-                    <i class="situation-video fa fa-volume-up" aria-hidden="true"></i>
-                </button>
             </div>
         </div>
-
         <section class="middle">
-            <div class="container-middle">
-
-                <div class="tab-item" style="padding-bottom: 40px;">
-                    <div class="link-item">
-                        <a href="#">Hàng mới về</a>
-                        <a href="#">Premium</a>
-                        <a href="#">Giày dép hè</a>
-                        <a href="#">Summer outfit</a>
-                        <a href="#">Discount</a>
-                        <a href="#">xem Thêm</a>
-                    </div>
-                </div>
-
+            <div class="container">
                 <div class="row">
-                    <!-- Loop through each product and generate product card -->
-                    <% ArrayList<Products> products = (ArrayList<Products>) request.getAttribute("searchResults");
-                        if (products != null) {
-                            for (int i = 0; i < products.size(); i++) {
-                                Products product = products.get(i);
-                                String[] url = product.getImageURL().split(";");
-                    %>
-                    <div class="col-md-3 mb-4">
-                        <div class="card h-100">
-                            <a href="ShowProductServlet?productId=<%= product.getProductID()%>">
-                                <img src="<%= url[0]%>" class="card-img-top fixed-size-img" alt="<%= product.getName()%>">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title"><%= product.getName()%></h5>
-                                <p class="card-text"><%= product.getDescription()%></p>
-                                <p class="card-text">Price: $<%= product.getPrice()%>/VNĐ</p>
-                                <a href="#" class="btn btn-primary">Add to Cart</a>
+                    <!-- Left Column / Product Image -->
+                    <div class="left-column col-md-6 mb-4">
+                        <div class="awSlider">                   
+                            <div class="carousel slide" data-bs-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <% for (int i = 0; i < url.length; i++) {%>
+                                    <li data-bs-target=".carousel" data-bs-slide-to="<%= i%>" <%= i == 0 ? "class='active'" : ""%>></li>
+                                        <% } %>
+                                </ol>
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <% for (int i = 0; i < url.length; i++) {%>
+                                    <div class="carousel-item <%= i == 0 ? "active" : ""%>">
+                                        <img src="<%= url[i]%>" class="d-block w-100" alt="Slide <%= i%>">
+                                        <div class="carousel-caption d-none d-md-block">
+                                        </div>
+                                    </div>
+                                    <% }%>
+                                </div>
+
+                                <!-- Controls -->
+                                <button class="carousel-control-prev" type="button" data-bs-target=".carousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target=".carousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <% }
-                    } else { %>
-                    <p>Không tìm thấy kết quả nào.</p>
-                    <% }%>
+
+                    <!-- Right Column -->
+                    <div class="right-column col-md-6">
+                        <!-- Product Description -->
+                        <div class="product-description">
+                            <span><%= product.getBrand()%></span>
+                            <h1><%= product.getName()%></h1>
+                            <p><%= product.getDescription()%></p>
+                        </div>
+
+                        <!-- Product Pricing -->
+                        <div class="product-price">
+                            <span>$<%= product.getPrice()%></span>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </section>
 
         <style>
-            .product-list {
-                display: flex;
-                flex-wrap: wrap;
+            awSlider .carousel{
+                display:table;
+                z-index:2;
+                -moz-box-shadow: 0 0 4px #444;
+                -webkit-box-shadow: 0 0 4px #444;
+                box-shadow: 0 0 15px rgba(1,1,1,.5);
             }
 
-            .product-item {
-                flex: 0 0 calc(25% - 1rem); /* 25% width for each item, adjust margin as needed */
-                margin-bottom: 1rem; /* Optional margin between items */
-                box-sizing: border-box;
-            }
-            .card-body {
-                height: 200px; /* Chiều cao cố định */
-                overflow: hidden; /* Ẩn phần nội dung thừa */
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
+            .carousel-caption {
+
             }
 
-            .card-title {
-                font-size: 1.25rem;
-                font-weight: bold;
-                white-space: nowrap; /* Ngăn không cho từ xuống dòng */
-                overflow: hidden; /* Ẩn phần nội dung thừa */
-                text-overflow: ellipsis; /* Hiển thị ... khi vượt quá */
+            section.awSlider{
+                margin:30px auto;
+                padding:30px;
+                position:relative;
+                display:table;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
             }
 
-            .card-text {
-                overflow: hidden; /* Ẩn phần nội dung thừa */
-                text-overflow: ellipsis; /* Hiển thị ... khi vượt quá */
-                display: -webkit-box;
-                -webkit-line-clamp: 1; /* Giới hạn số dòng tối đa hiển thị */
-                -webkit-box-orient: vertical;
+            section.awSlider:hover > img{
+                -ms-transform: scale(1.2);
+                -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+                opacity:1;
             }
 
-            .card-img-top {
+            section.awSlider img{
+                pointer-events: none;
+            }
+
+            section.awSlider > img{
+                position:absolute;
+                top:30px;
+                z-index:1;
+                transition:all .3s;
+                filter: blur(1.8vw);
+                -webkit-filter: blur(2vw);
+                -moz-filter: blur(2vw);
+                -o-filter: blur(2vw);
+                -ms-filter: blur(2vw);
+                -ms-transform: scale(1.1);
+                -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+                opacity:.5;
+            }
+            section .carousel-item img {
                 width: 100%;
-                height: 400px; /* Chiều cao cố định cho hình ảnh */
-                object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
+                object-fit: cover; /* Đảm bảo ảnh không bị kéo ra khi thay đổi kích thước */
+            }
+
+            .right-column {
+                margin-top: 50px;
+            }
+            .product-description {
+                border-bottom: 1px solid #E1E8EE;
+                margin-bottom: 20px;
+            }
+            .product-description span {
+                font-size: 24px;
+                color: #358ED7;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+            .product-description h1 {
+                font-weight: 300;
+                font-size: 48px;
+                color: #43484D;
+                letter-spacing: -2px;
+                text-shadow:
+                    -1px -1px 0 #000,
+                    1px -1px 0 #000,
+                    -1px  1px 0 #000,
+                    1px  1px 0 #000;
+            }
+            .product-description p {
+                font-size: 20px;
+                font-weight: 300;
+                color: #86939E;
+                line-height: 24px;
+            }
+            .product-price {
+                display: flex;
+                align-items: center;
+            }
+            .product-price span {
+                font-size: 26px;
+                font-weight: 300;
+                color: #43474D;
+                margin-right: 20px;
             }
             .btn.btn-primary {
                 display: inline-block;
@@ -244,6 +278,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             }
         </style>
 
+        <script>
+            $(document).ready(function () {
+                $('.carousel').carousel({
+                    interval: 2000  // Adjust interval as needed
+                });
+            });
+        </script>
+
+        <!-- Footer -->
         <footer>
             <div class="description">
                 <div class="text">
@@ -328,42 +371,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
         </footer>
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>
-
-    <script>
-        let video = document.querySelector(".video-trailer");
-        const videoSituation = document.querySelector(".playPause");
-        const videoVolume = document.querySelector(".mute");
-        function playPause() {
-            if (video.paused) {
-                videoSituation.innerHTML = `<i class="situation-video fa fa-pause " aria-hidden="true"></i>`;
-
-                video.play();
-            } else {
-                videoSituation.innerHTML = `<i class="situation-video fa fa-play " aria-hidden="true"></i>`;
-
-                video.pause();
-            }
-        }
-
-        function volume() {
-            video.muted = !video.muted;
-            videoVolume.classList.toggle("muted");
-        }
-    </script>
-    <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit-icons.min.js"></script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-    crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-            integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
-    crossorigin="anonymous"></script>
-
 </html>
