@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="style/header.css">
         <link rel="stylesheet" href="style/header-video-trailer.css">
-        <link rel="stylesheet" href="style/middle.css">
+        <!--<link rel="stylesheet" href="style/middle.css">-->
         <link rel="stylesheet" href="style/middle-poster.css">
         <link rel="stylesheet" href="style/list-color.css">
         <link rel="stylesheet" href="style/footer.css">
@@ -148,7 +148,7 @@
                     </div>
 
                     <!-- Right Column -->
-                    <div class="right-column col-md-6">
+                    <div class="right-column col-md-6 mb-4">
                         <!-- Product Description -->
                         <div class="product-description">
                             <span><%= product.getBrand()%></span>
@@ -177,6 +177,15 @@
 
             .carousel-caption {
 
+            }
+
+            .carousel-control-next, .carousel-control-prev {
+                width: 50px;
+                background-color: #cccccc; /* Ensure the base color is applied to both */
+            }
+
+            .carousel-control-next:hover, .carousel-control-prev:hover {
+                background-color: #cccccc; /* Ensure hover color is applied to both */
             }
 
             section.awSlider{
@@ -218,17 +227,18 @@
                 transform: scale(1.1);
                 opacity:.5;
             }
+
             section .carousel-item img {
                 width: 100%;
                 object-fit: cover; /* Đảm bảo ảnh không bị kéo ra khi thay đổi kích thước */
             }
 
-            .right-column {
-                margin-top: 50px;
+            .right-column, .left-column {
+                margin-top: 20px;
             }
             .product-description {
-                border-bottom: 1px solid #E1E8EE;
                 margin-bottom: 20px;
+                height: 85%;
             }
             .product-description span {
                 font-size: 24px;
@@ -255,14 +265,17 @@
                 line-height: 24px;
             }
             .product-price {
+                border-top: 5px solid #E1E8EE;
                 display: flex;
                 align-items: center;
+                height: 10%;
             }
             .product-price span {
                 font-size: 26px;
                 font-weight: 300;
                 color: #43474D;
                 margin-right: 20px;
+                margin-top: 10px;
             }
             .btn.btn-primary {
                 display: inline-block;
@@ -272,6 +285,7 @@
                 text-decoration: none;
                 padding: 12px 30px;
                 transition: all .5s;
+                margin-top: 10px;
             }
             .btn.btn-primary:hover {
                 background-color: #64af3d;

@@ -28,7 +28,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="style/header.css">
         <link rel="stylesheet" href="style/header-video-trailer.css">
-        <link rel="stylesheet" href="style/middle.css">
+        <!--<link rel="stylesheet" href="style/middle.css">-->
         <link rel="stylesheet" href="style/middle-poster.css">
         <link rel="stylesheet" href="style/list-color.css">
         <link rel="stylesheet" href="style/footer.css">
@@ -191,6 +191,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         </section>
 
         <style>
+            .middle .tab-item .link-item{
+                padding-left: 7rem;
+                padding-top: 3rem;
+            }
+            .middle .tab-item .link-item a{
+                padding: 0.5rem 1rem 0.5rem 1rem;
+                margin-left: 0.5rem;
+                text-decoration: none;
+                color: black;
+                font-size: 20px;
+                font-weight: 500;
+                border: solid 1px black;
+            }
+
+            .middle .tab-item .link-item a:hover{
+                background-color: black;
+                color: white;
+            }
             .product-list {
                 display: flex;
                 flex-wrap: wrap;
