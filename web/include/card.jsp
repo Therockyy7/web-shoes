@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@page import="model.Products"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,14 +22,14 @@
   <!-- UIkit CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/css/uikit.min.css" />
 
-    <link rel="shortcut icon" href="../image/logoSHop.png" type="image/x-icon">
+    <link rel="shortcut icon" href="image/logo/logoSHop.png" type="image/x-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/header.css">
-    <link rel="stylesheet" href="../style/header-video-trailer.css">
-    <link rel="stylesheet" href="../style/tabs.css">
-    <link rel="stylesheet" href="../style/footer.css">
-    <link rel="stylesheet" href="../style/card.css">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/header-video-trailer.css">
+    <link rel="stylesheet" href="style/tabs.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/card.css">
     
 </head>
 <body>
@@ -74,46 +77,48 @@
         <div class="navbar">
             <div class="container">
                 <div class="left-section">
-                    <a href="/web/index.html">
-                        <img src="/web/image/logo/logoSHop.png" alt="#">
+                    <a href="index.jsp">
+                        <img src="image/logo/logoSHop.png" alt="#">
                     </a>
                 </div>
                 <div class="middle-section ">
                     <nav>
                         <ul>
-                            <li><a href="nam.jsp">Nam</a></li>
-                            <li><a href="nu.jsp">Nữ</a></li>
-                            <li><a href="discount.jsp">Giảm giá</a></li>
-                            <li><a href="all.jsp">Tất cả</a></li>
+                            <li><a href="include/nam.jsp">Nam</a></li>
+                            <li><a href="include/nu.jsp">Nữ</a></li>
+                            <li><a href="include/discount.jsp">Giảm giá</a></li>
+                            <li><a href="include/all.jsp">Tất cả</a></li>
                         </ul>
                     </nav>
 
                 </div>
-                <div class="right-section">
-                    <div class="container">
-                        <div class="search-place">
-                            <input class="search-bar" type="text" placeholder="Tìm kiếm">
-                            <button type="submit" class="search-button">
-                                <img class="search-icon" src="../icons/search.svg" alt="#">
-                            </button>
-                        </div>
-                        <a href="sigin.jsp">
-                            <img class="icon-head" src="../icons/user.png" alt="#">
-                        </a>
-                        <a href="wishList.jsp">
-                            <img class="icon-head" src="../icons/love-hand-drawn-heart-symbol-outline.png" alt="#">
-                        </a>
-                        <div class="notification-item">
-                            <a href="shopBag.jsp">
-                                <div class="shopBag-container">
-                                    <img class="icon-head" src="../icons/shopping-bag.png" alt="#">
-                                </div>
+                 <div class="right-section">
+                        <div class="container">
+                            <div class="search-place">
+                                <form id="searchForm" action="SearchServlet" method="get"> 
+                                    <input id="searchInput" class="search-bar" type="text" name="query" placeholder="Tìm kiếm">
+                                    <button type="submit" class="search-button">
+                                        <img class="search-icon" src="icons/search.svg" alt="#">
+                                    </button>
+                                </form>
+                            </div>
+                            <a href="include/sigin.jsp">
+                                <img class="icon-head" src="icons/user.png" alt="#">
                             </a>
-                            <div class="tool-shop">Túi của bạn trống</div>
+                            <a href="include/wishList.jsp">
+                                <img class="icon-head" src="icons/love-hand-drawn-heart-symbol-outline.png" alt="#">
+                            </a>
+                            <div class="notification-item">
+                                <a href="include/shopBag.jsp">
+                                    <div class="shopBag-container">
+                                        <img class="icon-head" src="icons/shopping-bag.png" alt="#">
+                                    </div>
+                                </a>
+                                <div class="tool-shop">Túi của bạn trống</div>
+                            </div>
                         </div>
+
                     </div>
-                    
-                </div>
             </div>
 
         </div>
@@ -123,56 +128,64 @@
      <!-- Tabs navs -->
     <div class="tabs-nav">
         <div class="container-tab">
-            <div class="tab"><a class="tab-index" href="../index.jsp">TRANG CHỦ</a></div>
-            <div class="tab"><a href="nam.jsp">Giày Nam</a></div>|
-            <div class="tab"><a href="nu.jsp">Giày Nữ</a></div>|
-            <div class="tab"><a href="newArrival.jsp">New arrivals</a></div>
+            <div class="tab"><a class="tab-index" href="index.jsp">TRANG CHỦ</a></div>
+            <div class="tab"><a href="include/nam.jsp">Giày Nam</a></div>|
+            <div class="tab"><a href="include/nu.jsp">Giày Nữ</a></div>|
+            <div class="tab"><a href="include/newArrival.jsp">New arrivals</a></div>
         </div>
     </div>
-
+<%
+         Products product = (Products) request.getAttribute("product");
+         String[] url = product.getImageURL().split(";");
+%>
+     
     <div class="container-card">
         <div class="container-right p-5">
             <div class="image-product">
-                <img src="../image/jordan.jpg" alt="">
-                <img src="../image/jordan.jpg" alt="">
-                <img src="../image/jordan.jpg" alt="">
-                <img src="../image/jordan.jpg" alt="">
+                <% 
+                    for(int i = 0; i < url.length; i++){
+                %>
+                <img src="<%= url[i]%>" alt="">
+                <%
+                    }
+                %>
+                
             </div>
 
             <div class="accordion p-5" id="accordionExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Accordion Item #1
+                      Brand
                     </button>
                   </h2>
                   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                      <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                      <strong>${product.brand}.</strong> 
                     </div>
                   </div>
                 </div>
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Accordion Item #2
+                     Description
                     </button>
                   </h2>
                   <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                      <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        ${product.description}
                     </div>
                   </div>
                 </div>
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Accordion Item #3
+                      Phù hợp
                     </button>
                   </h2>
                   <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                      <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <Strong>${categories.name}.</strong> ${categories.description}. 
                     </div>
                   </div>
                 </div>
@@ -180,13 +193,13 @@
         </div>
         <div class="container-left">
             <div class="information">
-                <h2>GIÀY CONTINENTAL 80 STRIPES</h2>
-                <p class="price fw-semibold">1.700</p>
-                <div class="fw-semibold">Màu sắc</div>
-                <div class="product-color">
+                <h2>${product.name}</h2>
+                <p class="price fw-semibold">${product.price}$</p>
+                <!-- <div class="fw-semibold">Màu sắc</div>
+                 <div class="product-color">
                     <a class="color" href="#"><img src="../image/color/Screenshot 2024-06-23 160841.png" alt="#"></a>
                     <a class="color" href="#"><img src="./image/color/Screenshot 2024-06-23 160859.png" alt="#"></a>
-                </div>
+                </div>  -->
                 <div class="fw-semibold">Kích cỡ</div>
                 
                 <div uk-switcher="animation: uk-animation-fade; toggle: > *">
@@ -206,7 +219,8 @@
                     
                 </div>
                 <div class="uk-margin-top">
-                    <span class="uk-margin-small-right text-decoration-underline" uk-icon="tag"> Hoàn trả dễ dàng</span>
+                    <span class="uk-margin-small-right text-decoration-underline" uk-icon="tag"> Hoàn trả dễ dàng</span><br>
+                    <span class="uk-margin-small-right text-decoration-underline" uk-icon="tag"> FREE SHIPPING FOR ADICLUB MEMBERS!</span>
 
                 </div>
 
@@ -309,7 +323,7 @@
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     
-     <script src="../js/pagination_all.js"></script>
+     <script src="js/pagination_all.js"></script>
      </body>
 
 

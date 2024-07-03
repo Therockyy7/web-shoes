@@ -3,10 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/netbean_javaWEB/web-shoes-prj/web/include/all.jsp</file>
-            <file>file:/D:/netbean_javaWEB/web-shoes-prj/web/include/nam.jsp</file>
-            <file>file:/D:/netbean_javaWEB/web-shoes-prj/web/include/newArrival.jsp</file>
-            <file>file:/D:/netbean_javaWEB/web-shoes-prj/web/include/card.jsp</file>
+            <file>file:/D:/shopSHOES/web-shoes/web/include/searchProducts.jsp</file>
+            <file>file:/D:/shopSHOES/web-shoes/src/java/controller/SearchServlet.java</file>
+            <file>file:/D:/shopSHOES/web-shoes/src/java/controller/AllServlet.java</file>
+            <file>file:/D:/shopSHOES/web-shoes/web/include/card.html</file>
+            <file>file:/D:/shopSHOES/web-shoes/src/java/controller/ShowInfoProductServlet.java</file>
+            <file>file:/D:/shopSHOES/web-shoes/web/include/nam.html</file>
+            <file>file:/D:/shopSHOES/web-shoes/web/WEB-INF/web.xml</file>
+            <file>file:/D:/shopSHOES/web-shoes/web/index.html</file>
+            <file>file:/D:/shopSHOES/web-shoes/web/include/all.html</file>
+            <file>file:/D:/shopSHOES/web-shoes/src/java/model/ProductsDB.java</file>
+            <file>file:/D:/shopSHOES/web-shoes/web/include/card.jsp</file>
+            <file>file:/D:/shopSHOES/web-shoes/web/include/all.jsp</file>
+            <file>file:/D:/shopSHOES/web-shoes/src/java/model/Categories.java</file>
+            <file>file:/D:/shopSHOES/web-shoes/web/index.jsp</file>
+            <file>file:/D:/shopSHOES/web-shoes/src/java/model/Products.java</file>
+            <file>file:/D:/shopSHOES/web-shoes/web/include/showInfoProduct.jsp</file>
         </group>
     </open-files>
 </project-private>

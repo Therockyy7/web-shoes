@@ -32,6 +32,7 @@
 .container-card .container-left .information{
 
     position: sticky;
+    top: 1rem;
     padding-top: 1rem;
     padding-left: 2rem;
 

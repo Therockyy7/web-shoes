@@ -130,12 +130,12 @@
         </div>
     </div>
 
-    <!-- List item -->
+ <!-- List item -->
      <div class="list-Item">
         <div class="list-tab row">
             <a class="col-sm border border-dark text-center" href="all.jsp">Tất cả giày</a>
             <a class="col-sm border border-dark text-center text-light bg-dark bg-gradient" href="newArrival.jsp">Hàng mới về</a>
-            <a class="col-sm border border-dark text-center" href="all.jsp"> Giày Sneaker</a>
+            <a class="col-sm border border-dark text-center" href="newArrival.jsp"> Giày Sneaker</a>
         </div>
 
         <div class="tab-content pt-5" id="tab-content">
@@ -161,54 +161,8 @@
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                       </div>
                     </a>                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
+                  </div>
+                    
                     <div class="card uk-card uk-card-hover">
                       <a  class="text-decoration-none text-dark" href="card.jsp">
                       <img src="../image/jordan.jpg" class="card-img-top" alt="...">
@@ -218,7 +172,98 @@
                       </div>
                     </a>                    
                   </div>
-                  
+                    
+                    <div class="card uk-card uk-card-hover">
+                      <a  class="text-decoration-none text-dark" href="card.jsp">
+                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title ">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      </div>
+                    </a>                    
+                  </div>
+                    
+                    <div class="card uk-card uk-card-hover">
+                      <a  class="text-decoration-none text-dark" href="card.jsp">
+                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title ">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      </div>
+                    </a>                    
+                  </div>
+                    
+                    <div class="card uk-card uk-card-hover">
+                      <a  class="text-decoration-none text-dark" href="card.jsp">
+                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title ">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      </div>
+                    </a>                    
+                  </div>
+                    
+                    <div class="card uk-card uk-card-hover">
+                      <a  class="text-decoration-none text-dark" href="card.jsp">
+                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title ">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      </div>
+                    </a>                    
+                  </div>
+                    
+                    <div class="card uk-card uk-card-hover">
+                      <a  class="text-decoration-none text-dark" href="card.jsp">
+                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title ">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      </div>
+                    </a>                    
+                  </div>
+                    
+                    <div class="card uk-card uk-card-hover">
+                      <a  class="text-decoration-none text-dark" href="card.jsp">
+                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title ">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      </div>
+                    </a>                    
+                  </div>
+                    
+                    <div class="card uk-card uk-card-hover">
+                      <a  class="text-decoration-none text-dark" href="card.jsp">
+                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title ">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      </div>
+                    </a>                    
+                  </div>
+                    
+                    <div class="card uk-card uk-card-hover">
+                      <a  class="text-decoration-none text-dark" href="card.jsp">
+                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title ">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      </div>
+                    </a>                    
+                  </div>
+                    
+                    <div class="card uk-card uk-card-hover">
+                      <a  class="text-decoration-none text-dark" href="card.jsp">
+                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title ">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      </div>
+                    </a>                    
+                  </div>
+                    
+                      
                     
                 </div>
 
@@ -248,7 +293,6 @@
             
           </div>
      </div>
-
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit-icons.min.js"></script>

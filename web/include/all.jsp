@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Products"%>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -21,12 +24,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/css/uikit.min.css" />
 
 
-    <link rel="shortcut icon" href="../image/logo/logoSHop.png" type="image/x-icon">
+    <link rel="shortcut icon" href="image/logo/logoSHop.png" type="image/x-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/header.css">
-    <link rel="stylesheet" href="../style/header-video-trailer.css">
-    <link rel="stylesheet" href="../style/tabs.css">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/header-video-trailer.css">
+    <link rel="stylesheet" href="style/tabs.css">
+    <link rel="stylesheet" href="style/card.css">
     
 </head>
 <body>
@@ -74,46 +78,48 @@
         <div class="navbar">
             <div class="container">
                 <div class="left-section">
-                    <a href="../index.jsp">
-                        <img src="../image/logo/logoSHop.png" alt="#">
+                    <a href="index.jsp">
+                        <img src="image/logo/logoSHop.png" alt="#">
                     </a>
                 </div>
                 <div class="middle-section ">
                     <nav>
                         <ul>
-                            <li><a href="nam.jsp">Nam</a></li>
-                            <li><a href="nu.jsp">Nữ</a></li>
-                            <li><a href="discount.jsp">Giảm giá</a></li>
-                            <li><a href="all.jsp">Tất cả</a></li>
+                            <li><a href="include/nam.jsp">Nam</a></li>
+                            <li><a href="include/nu.jsp">Nữ</a></li>
+                            <li><a href="include/discount.jsp">Giảm giá</a></li>
+                            <li><a href="include/all.jsp">Tất cả</a></li>
                         </ul>
                     </nav>
 
                 </div>
                 <div class="right-section">
-                    <div class="container">
-                        <div class="search-place">
-                            <input class="search-bar" type="text" placeholder="Tìm kiếm">
-                            <button type="submit" class="search-button">
-                                <img class="search-icon" src="../icons/search.svg" alt="#">
-                            </button>
-                        </div>
-                        <a href="sigin.jsp">
-                            <img class="icon-head" src="../icons/user.png" alt="#">
-                        </a>
-                        <a href="wishList.jsp">
-                            <img class="icon-head" src="../icons/love-hand-drawn-heart-symbol-outline.png" alt="#">
-                        </a>
-                        <div class="notification-item">
-                            <a href="shopBag.jsp">
-                                <div class="shopBag-container">
-                                    <img class="icon-head" src="../icons/shopping-bag.png" alt="#">
-                                </div>
+                        <div class="container">
+                            <div class="search-place">
+                                <form id="searchForm" action="SearchServlet" method="get"> 
+                                    <input id="searchInput" class="search-bar" type="text" name="query" placeholder="Tìm kiếm">
+                                    <button type="submit" class="search-button">
+                                        <img class="search-icon" src="icons/search.svg" alt="#">
+                                    </button>
+                                </form>
+                            </div>
+                            <a href="include/sigin.jsp">
+                                <img class="icon-head" src="icons/user.png" alt="#">
                             </a>
-                            <div class="tool-shop">Túi của bạn trống</div>
+                            <a href="include/wishList.jsp">
+                                <img class="icon-head" src="icons/love-hand-drawn-heart-symbol-outline.png" alt="#">
+                            </a>
+                            <div class="notification-item">
+                                <a href="include/shopBag.jsp">
+                                    <div class="shopBag-container">
+                                        <img class="icon-head" src="icons/shopping-bag.png" alt="#">
+                                    </div>
+                                </a>
+                                <div class="tool-shop">Túi của bạn trống</div>
+                            </div>
                         </div>
+
                     </div>
-                    
-                </div>
             </div>
 
         </div>
@@ -124,146 +130,53 @@
      <!-- Tabs navs -->
     <div class="tabs-nav">
         <div class="container-tab">
-            <div class="tab"><a class="tab-index" href="../index.jsp">TRANG CHỦ</a></div>
-            <div class="tab"><a href="nam.jsp">Giày Nam</a></div>|
-            <div class="tab"><a href="nu.jsp">Giày Nữ</a></div>|
-            <div class="tab"><a href="newArrival.jsp">New arrivals</a></div>
+            <div class="tab"><a class="tab-index" href="index.jsp">TRANG CHỦ</a></div>
+            <div class="tab"><a href="include/nam.jsp">Giày Nam</a></div>|
+            <div class="tab"><a href="include/nu.jsp">Giày Nữ</a></div>|
+            <div class="tab"><a href="include/newArrival.jsp">New arrivals</a></div>
         </div>
     </div>
 
     <!-- List item -->
      <div class="list-Item">
         <div class="list-tab row">
-            <a class="col-sm border border-dark text-center text-light bg-dark bg-gradient" href="all.jsp">Tất cả giày</a>
-            <a class="col-sm border border-dark text-center" href="newArrival.jsp">Hàng mới về</a>
-            <a class="col-sm border border-dark text-center" href="newArrival.jsp"> Giày Sneaker</a>
+            <a class="col-sm border border-dark text-center text-light bg-dark bg-gradient" href="include/all.jsp">Tất cả giày</a>
+            <a class="col-sm border border-dark text-center" href="include/newArrival.jsp">Hàng mới về</a>
+            <a class="col-sm border border-dark text-center" href="include/newArrival.jsp"> Giày Sneaker</a>
         </div>
 
         <div class="tab-content pt-5" id="tab-content">
             <div class="tab-pane active" id="fill-tabpanel-0" role="tabpanel" aria-labelledby="fill-tab-0">
                 <div class="row row-cols-1 row-cols-md-4 g-4 card-container">
-                    <!-- <div class="col"> -->
-                      <div class="card uk-card uk-card-hover">
-                        <a  class="text-decoration-none text-dark" href="card.jsp">
-                        <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title ">Card title</h5>
-                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                      </a>                    
-                    </div>
-                    <!-- </div> -->
                     
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                  </div>
-                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                  </div>
-                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                  </div>
-                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                  </div>
-                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                  </div>
-                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                  </div>
-                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                  </div>
-                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                  </div>
-                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                  </div>
-                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                  </div>
-                    
-                    <div class="card uk-card uk-card-hover">
-                      <a  class="text-decoration-none text-dark" href="card.jsp">
-                      <img src="../image/jordan.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title ">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </a>                    
-                  </div>
-                    
+                       
+                     <%
+                          
+                                ArrayList<Products> list = (ArrayList<Products>) request.getAttribute("list");
+                                
+                                
+                                for(Products item : list){
+                                    String[] url = item.getImageURL().split(";");
+                            %>
+
+                                <!-- <div class="col"> -->
+                                <div class="card uk-card uk-card-hover">
+                                    <a  class="text-decoration-none text-dark" href="AllServlet?id=<%= item.getProductID() %>&action=showItem">
+                                        <img src="<%= url[0] %> " class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title "><%= item.getName() %></h5>
+                                            <p class="card-text"><%= item.getDescription() %></p>
+                                        </div>
+                                    </a>                    
+                                </div>
+                                <!-- </div> -->
+
+                            
+                            
+                            <%
+                                }
+                            %>
+           
                       
                     
                 </div>
@@ -303,7 +216,7 @@
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-    <script src="../js/pagination_all.js"></script>
+    <script src="js/pagination_all.js"></script>
      </body>
 
 

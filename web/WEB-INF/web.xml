@@ -8,6 +8,10 @@
         <servlet-name>ShowInfoProductServlet</servlet-name>
         <servlet-class>controller.ShowInfoProductServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllServlet</servlet-name>
+        <servlet-class>controller.AllServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/SearchServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>ShowInfoProductServlet</servlet-name>
         <url-pattern>/ShowInfoProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllServlet</servlet-name>
+        <url-pattern>/AllServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

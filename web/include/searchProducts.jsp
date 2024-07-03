@@ -92,7 +92,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                 <li><a href="include/nam.jsp">Nam</a></li>
                                 <li><a href="include/nu.jsp">Nữ</a></li>
                                 <li><a href="include/discount.jsp">Giảm giá</a></li>
-                                <li><a href="include/all.jsp">Tất cả</a></li>
+                                <li><a href="AllServlet?action=listAll">Tất cả</a></li>
                             </ul>
                         </nav>
 
@@ -154,7 +154,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     %>
                     <div class="col-md-3 mb-4">
                         <div class="card h-100">
-                            <a href="ShowInfoProductServlet?productId=<%= product.getProductID()%>">
+                            <a href="AllServlet?id=<%= product.getProductID() %>&action=showItem">
                                 <img src="<%= url[0]%>" class="card-img-top fixed-size-img" alt="<%= product.getName()%>">
                             </a>
                             <div class="card-body">
