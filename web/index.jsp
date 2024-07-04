@@ -103,7 +103,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                   </button>
                 </form>
               </div>
-                <a href="include/login.jsp">
+                <a href="login.jsp">
                 <img class="icon-head" src="icons/user.png" alt="#">
               </a>
               <a href="include/wishList.jsp">
