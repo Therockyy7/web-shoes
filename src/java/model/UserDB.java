@@ -12,38 +12,36 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UserDB implements DatabaseInfo {
-    public static Connection getConnect(){
-        try{ 
-            Class.forName(DRIVERNAME); 
-	} catch(ClassNotFoundException e) {
+
+    public static Connection getConnect() {
+        try {
+            Class.forName(DRIVERNAME);
+        } catch (ClassNotFoundException e) {
             System.out.println("Error loading driver" + e);
-	}
-        try{            
-            Connection con = DriverManager.getConnection(DBURL,USERDB,PASSDB);
-            return con;
         }
-        catch(SQLException e) {
+        try {
+            Connection con = DriverManager.getConnection(DBURL, USERDB, PASSDB);
+            return con;
+        } catch (SQLException e) {
             System.out.println("Error: " + e);
         }
         return null;
     }
-    
-     public static User login(String email, String password) {
+
+    public static User login(String email, String password) {
         User user = null;
         try (Connection con = getConnect()) {
-            // Lấy thông tin user từ bảng Users
             PreparedStatement stmt = con.prepareStatement("SELECT UserID, Username, Password, Email FROM Users WHERE Email=? AND Password=?");
-            stmt.setString(1, email); 
-            stmt.setString(2, password); 
+            stmt.setString(1, email);
+            stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                int UserID = rs.getInt("UserID");
-                String Username = rs.getString("Username");
-                user = new User(UserID, Username, email, password);
-                
-                // Lấy role từ bảng UserRoles
+                int userId = rs.getInt("UserID");
+                String username = rs.getString("Username");
+                user = new User(userId, username, email, password);
+
                 PreparedStatement roleStmt = con.prepareStatement("SELECT r.Name FROM UserRoles ur JOIN Roles r ON ur.RoleID = r.RoleID WHERE ur.UserID=?");
-                roleStmt.setInt(1, UserID);
+                roleStmt.setInt(1, userId);
                 ResultSet roleRs = roleStmt.executeQuery();
                 if (roleRs.next()) {
                     String role = roleRs.getString("Name");
@@ -95,13 +93,12 @@ public class UserDB implements DatabaseInfo {
         }
         return userList;
     }
-     
-    public static void main(String[] a){
+
+    public static void main(String[] a) {
         ArrayList<User> list = UserDB.listAllUsers();
-        for (User item: list) 
-        {
+        for (User item : list) {
             System.out.println(item);
         }
     }
-    
+
 }

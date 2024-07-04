@@ -3,17 +3,15 @@ package model;
 import java.io.Serializable;
 
 public class User implements Serializable {
-
     private int userId;
     private String username;
     private String email;
     private String password;
     private String role;
 
-    public User() {
-    }
+    // Constructors
+    public User() {}
 
-    
     public User(int userId, String username, String email, String password) {
         this.userId = userId;
         this.username = username;
@@ -21,6 +19,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    // Getters and Setters
     public int getUserId() {
         return userId;
     }
@@ -63,7 +62,12 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" + "userId=" + userId + ", username=" + username + ", email=" + email + ", password=" + password + ", role=" + role + '}';
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
-
 }

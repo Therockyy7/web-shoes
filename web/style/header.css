@@ -88,6 +88,9 @@
     text-decoration: none;
     transition: background-color 1s;
 }
+.btn_three i{
+    align-items: end;
+}
 
 /* .navbar .grid {
     display: grid;
@@ -238,3 +241,4 @@
     top: 0px;
     transition: all 0.3s linear;
 }
+.hidden {display: none;}
