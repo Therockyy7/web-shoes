@@ -109,5 +109,11 @@ public class Products {
     public void setManufacturerID(int manufacturerID) {
         this.manufacturerID = manufacturerID;
     }
+
+    @Override
+    public String toString() {
+        return "Products{" + "productID=" + productID + ", name=" + name + ", brand=" + brand + ", categoryID=" + categoryID + ", price=" + price + ", description=" + description + ", imageURL=" + imageURL + ", stockQuantity=" + stockQuantity + ", manufacturerID=" + manufacturerID + '}';
+    }
+    
     
 }

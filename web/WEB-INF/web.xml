@@ -4,9 +4,17 @@
         <servlet-name>SearchServlet</servlet-name>
         <servlet-class>controller.SearchServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchServletTest</servlet-name>
+        <servlet-class>controller.SearchServletTest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/SearchServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchServletTest</servlet-name>
+        <url-pattern>/SearchServletTest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

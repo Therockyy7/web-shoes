@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="web-shoes-prj" default="default" basedir=".">
-    <description>Builds, tests, and runs the project web-shoes-prj.</description>
+<project name="WebShOeS_TestNo1" default="default" basedir=".">
+    <description>Builds, tests, and runs the project WebShOeS_TestNo1.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
