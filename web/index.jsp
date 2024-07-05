@@ -14,8 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
-              rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <!-- UIkit CSS -->
@@ -31,6 +30,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <link rel="stylesheet" href="style/middle-poster.css">
         <link rel="stylesheet" href="style/list-color.css">
         <link rel="stylesheet" href="style/footer.css">
+        <link rel="stylesheet" href="style/panel.css">
     </head>
 
     <body>
@@ -108,14 +108,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <c:choose>
                                 <c:when test="${not empty sessionScope.user}">
                                     <div id="userPanel" class="user-panel">
-                                        <a href="login.jsp" id="userIcon">
+                                        <a href="javascript:void(0);" id="userIcon" onclick="toggleUserInfo()">
                                             <img class="icon-head" src="icons/user.png" alt="#">
                                         </a>
-                                        <div id="userInfo" class="user-info hidden">
-                                            <span>${sessionScope.user.username}</span>
-                                            <a href="LogoutServlet">
-                                                <img class="icon-head" src="icons/logout.png" alt="#">
-                                            </a>
+                                        <div id="userInfo" class="user-info">
+                                            <table>
+                                                <tr>
+                                                    <td>${sessionScope.user.username}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="LogoutServlet" class="logout-link">
+                                                            <img class="icon-logout" src="icons/logout.png" alt="Logout Icon"> Logout
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <!-- Thêm các option khác ở đây -->
+                                            </table>
                                         </div>
                                     </div>
                                 </c:when>
@@ -640,7 +649,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
     </body>
 
-    <script>
+    <script> // Panel user
+        function toggleUserInfo() {
+            var userInfo = document.getElementById("userInfo");
+            if (userInfo.style.display === "none" || userInfo.style.display === "") {
+                userInfo.style.display = "block";
+            } else {
+                userInfo.style.display = "none";
+            }
+        }
+
+        document.addEventListener('click', function (event) {
+            var userInfo = document.getElementById("userInfo");
+            var userIcon = document.getElementById("userIcon");
+            if (userInfo && userIcon) {
+                if (!userIcon.contains(event.target) && !userInfo.contains(event.target)) {
+                    userInfo.style.display = "none";
+                }
+            }
+        });
+
+    </script>
+
+    <script> // Trailer header
         let video = document.querySelector(".video-trailer");
         const videoSituation = document.querySelector(".playPause");
         const videoVolume = document.querySelector(".mute");

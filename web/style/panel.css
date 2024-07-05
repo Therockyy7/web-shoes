@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+.icon-logout {
+    height: 24px; /* Điều chỉnh kích thước hình ảnh */
+    margin-right: 5px; /* Khoảng cách giữa hình ảnh và chữ */
+    vertical-align: middle; /* Căn giữa hình ảnh với chữ */
+}
+
+.logout-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.user-info {
+    display: none;
+    position: absolute;   
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    width: 130px;
+}
+
+.user-panel {
+    position: relative;
+}
+
+.user-info table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-info td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
