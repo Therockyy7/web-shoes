@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -155,6 +156,7 @@ public class ShowAddToBag extends HttpServlet {
             // Set the updated map to the request attribute
             request.setAttribute("MapProduct", pro);
             request.getRequestDispatcher("include/shopBag.jsp").forward(request, response);
+//            request.getRequestDispatcher("include/shopBag_2.jsp").forward(request, response);
 
         } catch (Exception ex) {
             Logger.getLogger(ShowAddToBag.class.getName()).log(Level.SEVERE, null, ex);
@@ -163,8 +165,12 @@ public class ShowAddToBag extends HttpServlet {
     
     private void doShowBag(HttpServletRequest request, HttpServletResponse response) {
         try {
+            HttpSession MapProductSession = request.getSession();
+            MapProductSession.setAttribute("mapProduct", pro);
+            
             request.setAttribute("MapProduct", pro);
             request.getRequestDispatcher("include/shopBag.jsp").forward(request, response);
+//            request.getRequestDispatcher("include/shopBag_2.jsp").forward(request, response);
         } catch (ServletException ex) {
             Logger.getLogger(ShowAddToBag.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -213,6 +219,7 @@ public class ShowAddToBag extends HttpServlet {
 
             request.setAttribute("MapProduct", pro);
             request.getRequestDispatcher("include/shopBag.jsp").forward(request, response);
+//            request.getRequestDispatcher("include/shopBag_2.jsp").forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(ShowAddToBag.class.getName()).log(Level.SEVERE, null, ex);
             try {

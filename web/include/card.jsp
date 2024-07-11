@@ -113,17 +113,19 @@
                                         <a href="include/sigin.jsp">
                                             <img class="icon-head" src="icons/user.png" alt="#">
                                         </a>
-                                        <a href="ShowWishListServlet?action=showWishLish">
+                                        <a class="relate" href="ShowWishListServlet?action=showWishLish">
                                             <img class="icon-head" src="icons/love-hand-drawn-heart-symbol-outline.png"
                                                 alt="#">
+                                            <div class="quantity js-wishList-quantity"></div>
                                         </a>
                                         <div class="notification-item">
                                             <a href="ShowAddToBag?action=showBag">
-                                                <div class="shopBag-container">
+                                                <div class="shopBag-container relate">
                                                     <img class="icon-head" src="icons/shopping-bag.png" alt="#">
+                                                    <div class="quantity js-bag-quantity"></div>
                                                 </div>
                                             </a>
-                                            <div class="tool-shop">Túi của bạn trống</div>
+                                            <!--<div class="tool-shop">Túi của bạn trống</div>-->
                                         </div>
                                     </div>
 
@@ -144,7 +146,9 @@
                         </div>
                     </div>
                     <% Products product=(Products) request.getAttribute("product"); 
-                    String[] url=product.getImageURL().split(";"); %>
+                    String[] url=product.getImageURL().split(";"); 
+                    String[] size = product.getSize().split(";");
+                    %>
 
                         <div class="container-card">
                             <div class="container-right p-5">
@@ -219,19 +223,34 @@
                                         <input type="hidden" name="id" value="${product.productID}" />
 
                                         <div class="checkbox-wrapper-47">
-                                            <input type="radio" class="btn-check" name="checkboxes" id="cb-S" value="S" autocomplete="off" checked>
-                                            <label class="btn btn-light" for="cb-S">S</label>
+                                            
+                                            <%
+                                            for(int i = 0; i < size.length; i++){
+                                                int count = 0;
+                                                if(count == 0){
+                                                %>
+                                                    <input type="radio" class="btn-check" name="checkboxes" id="cb-<%=size[i]%>" value="<%=size[i]%>" autocomplete="off" checked="">
+                                                    <label class="btn btn-light" for="cb-<%=size[i]%>"><%=size[i]%></label>
+                                                    
+                                                <%
+                                                    count++;
+                                                    }else{
+                                                %>
 
-                                            <input type="radio" class="btn-check" name="checkboxes" id="cb-XS" value="XS" autocomplete="off">
-                                            <label class="btn btn-light" for="cb-XS">XS</label>
-
-                                            <input type="radio" class="btn-check" name="checkboxes" id="cb-XL" value="XL" autocomplete="off">
-                                            <label class="btn btn-light" for="cb-XL">XL</label>
+                                                    <input type="radio" class="btn-check" name="checkboxes" id="cb-<%=size[i]%>" value="<%=size[i]%>" autocomplete="off">
+                                                    <label class="btn btn-light" for="cb-<%=size[i]%>"><%=size[i]%></label>
+                                                <%
+                                                    }
+                                                %>
+                                            <%
+                                                }
+                                            %>
+                                
                                         </div>
 
                                         <div class="btn-space">
 
-                                            <button type="button" id="addToBagButton" class="button-86 uk-margin-top text-light btn btnOption" align="center">THÊM VÀO GIỎ HÀNG</button>
+                                            <button type="button" id="addToBagButton" class="button-86 uk-margin-top text-light btn btnOption" data-id="${product.productID}" align="center">THÊM VÀO GIỎ HÀNG</button>
 
                                             <a href="ShowWishListServlet?id=${product.productID}&action=addWishLish"
                                                class="button-55 add-to-wishlist" data-id="${product.productID}" role="button">
@@ -339,53 +358,60 @@
 
                         </footer>
                         <script>
-                            const button = document.querySelector(".heart-like-button");
+                            
+                            // const button = document.querySelector(".heart-like-button");
 
-                            button.addEventListener("click", () => {
-                                if (button.classList.contains("liked")) {
-                                    button.classList.remove("liked");
-                                } else {
-                                    button.classList.add("liked");
-                                }
-                            });
+                            // button.addEventListener("click", () => {
+                            //     if (button.classList.contains("liked")) {
+                            //         button.classList.remove("liked");
+                            //     } else {
+                            //         button.classList.add("liked");
+                            //     }
+                            // });
 
-                            document.getElementById('addToBagButton').addEventListener('click', function(event) {
-                             
-                                event.preventDefault();
+                           
 
-                                var form = document.getElementById('addToBagForm');
-                                var formData = new FormData(form);
-                                var xhr = new XMLHttpRequest();
-                                var params = new URLSearchParams(formData).toString();
+                            let wishList = JSON.parse(localStorage.getItem('wishList')) || [];
+                            let bag = JSON.parse(localStorage.getItem('bag')) || [];
 
-                                var actionUrl = 'ShowAddToBag' + '?' + params;
-                                console.log('Action URL:', actionUrl);
+                            function updateQuantity_bag() {
+                                document.querySelector('.js-bag-quantity').innerHTML = bag.length;
+                            }
 
-                                xhr.open('GET', actionUrl);
-                                xhr.onload = function() {
-                                    if (xhr.status === 200) {
-                                        console.log('Product added to bag successfully!');
-                                        // Handle success message or update UI
-                                    } else {
-                                        console.error('Error adding product to bag:', xhr.statusText);
-                                        // Handle error message or update UI
-                                    }
-                                };
-                                xhr.onerror = function() {
-                                    console.error('Network error.');
-                                    // Handle network error
-                                };
-                                xhr.send();
-                            });
+                            function saveBagToStorage() {
+                                localStorage.setItem('bag', JSON.stringify(bag));
+                            }
 
+                            function updateQuantity_wishList() {
+                                document.querySelector('.js-wishList-quantity').innerHTML = wishList.length;
+                            }
 
+                            function saveWishListToStorage() {
+                                localStorage.setItem('wishList', JSON.stringify(wishList));
+                            }
 
                             document.addEventListener('DOMContentLoaded', function () {
+                                updateQuantity_wishList();
+
                                 document.querySelectorAll('.add-to-wishlist').forEach(function (element) {
                                     element.addEventListener('click', function (event) {
                                         event.preventDefault(); // Prevent the default action (navigation)
+                                    
+                                        const productId = this.getAttribute('data-id');
+                                        const index = wishList.indexOf(productId);
+                                        if (index === -1) {
+                                            wishList.push(productId);
+                                            this.querySelector('.heart-like-button').classList.add('liked');
+                                            console.log('Added to wishlist');
+                                        } else {
+                                            wishList.splice(index, 1);
+                                            this.querySelector('.heart-like-button').classList.remove('liked');
+                                            console.log('Removed from wishlist');
+                                        }
 
-                                        var productId = this.getAttribute('data-id');
+                                        saveWishListToStorage();
+                                        updateQuantity_wishList();
+                                        
                                         var actionUrl = `ShowWishListServlet?id=${product.productID}&action=addWishLish`;
 
                                         var xhr = new XMLHttpRequest();
@@ -406,8 +432,63 @@
                                         xhr.send();
                                     });
                                 });
+
+                                // Set initial state of heart-like-button
+                                document.querySelectorAll('.add-to-wishlist').forEach(function (element) {
+                                    const productId = element.getAttribute('data-id');
+                                    if (wishList.includes(productId)) {
+                                        element.querySelector('.heart-like-button').classList.add('liked');
+                                    }
+                                });
+
                             });
 
+
+                            document.addEventListener('DOMContentLoaded', () => {
+                                updateQuantity_bag();
+                                document.getElementById('addToBagButton').addEventListener('click', function(event) {
+                                 
+                                        event.preventDefault();
+
+                                        const productId = this.getAttribute('data-id');
+                                        const index = bag.indexOf(productId);
+                                        if (index === -1) {
+                                            bag.push(productId);
+                                            
+                                            console.log('Added to bag');
+                                        } else {
+                                            bag.splice(index, 1);
+                                           
+                                            console.log('Removed from bag');
+                                        }
+                                        updateQuantity_bag();
+                                        saveBagToStorage();
+
+                                        var form = document.getElementById('addToBagForm');
+                                        var formData = new FormData(form);
+                                        var xhr = new XMLHttpRequest();
+                                        var params = new URLSearchParams(formData).toString();
+    
+                                        var actionUrl = 'ShowAddToBag' + '?' + params;
+                                        console.log('Action URL:', actionUrl);
+    
+                                        xhr.open('GET', actionUrl);
+                                        xhr.onload = function() {
+                                            if (xhr.status === 200) {
+                                                console.log('Product added to bag successfully!');
+                                                // Handle success message or update UI
+                                            } else {
+                                                console.error('Error adding product to bag:', xhr.statusText);
+                                                // Handle error message or update UI
+                                            }
+                                        };
+                                        xhr.onerror = function() {
+                                            console.error('Network error.');
+                                            // Handle network error
+                                        };
+                                        xhr.send();
+                                 });
+                            });
                         </script>
 
                         <!-- UIkit JS -->

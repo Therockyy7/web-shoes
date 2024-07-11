@@ -41,6 +41,8 @@ public class ProductsDB implements DatabaseInfo {
                 product.setPrice(rs.getDouble("Price"));
                 product.setDescription(rs.getString("Description"));
                 product.setImageURL(rs.getString("ImageURL"));  // Example: Assuming there's an ImageURL column
+                product.setSize(rs.getString("Size"));
+                product.setGender(rs.getString("Gender"));
                 // Add the Product object to the list
                 products.add(product);
             }
@@ -67,6 +69,8 @@ public class ProductsDB implements DatabaseInfo {
                 products.setStockQuantity(rs.getInt("StockQuantity"));
                 products.setDescription(rs.getString("Description"));
                 products.setImageURL(rs.getString("ImageURL"));  // Example: Assuming there's an ImageURL column
+                products.setSize(rs.getString("Size"));
+                products.setGender(rs.getString("Gender"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -100,10 +104,10 @@ public class ProductsDB implements DatabaseInfo {
           ArrayList<Products> list= new ArrayList<Products>();
           //Connection con = getConnect();
           try(Connection con=getConnectionWithSqlJdbc()) {
-            PreparedStatement stmt=con.prepareStatement("Select ProductID, Name, Brand, CategoryID, Price, Description, ImageURL, StockQuantity, ManufacturerID from Products");
+            PreparedStatement stmt=con.prepareStatement("Select ProductID, Name, Brand, CategoryID, Price, Description, ImageURL, StockQuantity, ManufacturerID, Size, Gender from Products");
             ResultSet  rs=stmt.executeQuery();
             while(rs.next()){
-                list.add(new Products(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getInt(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9)));
+                list.add(new Products(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getInt(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getString(10), rs.getString(11)));
             }
             con.close();
             return list;

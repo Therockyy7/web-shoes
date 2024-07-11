@@ -11,7 +11,9 @@ public class Products {
     private String imageURL;
     private int stockQuantity;
     private int manufacturerID;
-
+    private String size;
+    private String gender;
+    
     // Constructors, getters and setters
 
     public Products() {}
@@ -36,6 +38,21 @@ public class Products {
         this.manufacturerID = manufacturerID;
     }
 
+    public Products(int productID, String name, String brand, int categoryID, double price, String description, String imageURL, int stockQuantity, int manufacturerID, String size, String gender) {
+        this.productID = productID;
+        this.name = name;
+        this.brand = brand;
+        this.categoryID = categoryID;
+        this.price = price;
+        this.description = description;
+        this.imageURL = imageURL;
+        this.stockQuantity = stockQuantity;
+        this.manufacturerID = manufacturerID;
+        this.size = size;
+        this.gender = gender;
+    }
+
+    
     // Getters and setters...
 
     public int getProductID() {
@@ -110,10 +127,26 @@ public class Products {
         this.manufacturerID = manufacturerID;
     }
 
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     @Override
     public String toString() {
-        return "Products{" + "productID=" + productID + ", name=" + name + ", brand=" + brand + ", categoryID=" + categoryID + ", price=" + price + ", description=" + description + ", imageURL=" + imageURL + ", stockQuantity=" + stockQuantity + ", manufacturerID=" + manufacturerID + '}';
+        return "Products{" + "productID=" + productID + ", name=" + name + ", brand=" + brand + ", categoryID=" + categoryID + ", price=" + price + ", description=" + description + ", imageURL=" + imageURL + ", stockQuantity=" + stockQuantity + ", manufacturerID=" + manufacturerID + ", size=" + size + ", gender=" + gender + '}';
     }
-    
+
     
 }

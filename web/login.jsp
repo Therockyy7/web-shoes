@@ -105,7 +105,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                         <img class="icon-head" src="icons/shopping-bag.png" alt="#">
                                     </div>
                                 </a>
-                                <div class="tool-shop">Túi của bạn trống</div>
+<!--                                <div class="tool-shop">Túi của bạn trống</div>-->
                             </div>
                         </div>
                     </div>

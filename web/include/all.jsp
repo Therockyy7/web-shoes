@@ -108,16 +108,19 @@
                             <a href="include/sigin.jsp">
                                 <img class="icon-head" src="icons/user.png" alt="#">
                             </a>
-                            <a href="ShowWishListServlet?action=showWishLish">
-                                <img class="icon-head" src="icons/love-hand-drawn-heart-symbol-outline.png" alt="#">
+                            <a class="relate" href="ShowWishListServlet?action=showWishLish">
+                                <img class="icon-head" src="icons/love-hand-drawn-heart-symbol-outline.png"
+                                     alt="#">
+                                <div class="quantity js-wishList-quantity"></div>
                             </a>
                             <div class="notification-item">
                                 <a href="ShowAddToBag?action=showBag">
-                                    <div class="shopBag-container">
+                                    <div class="shopBag-container relate">
                                         <img class="icon-head" src="icons/shopping-bag.png" alt="#">
+                                        <div class="quantity js-bag-quantity"></div>
                                     </div>
                                 </a>
-                                <div class="tool-shop">Túi của bạn trống</div>
+                              
                             </div>
                         </div>
 
@@ -215,6 +218,13 @@
             
           </div>
      </div>
+     <script>
+        let wishList = JSON.parse(localStorage.getItem('wishList')) || [];
+        document.querySelector('.js-wishList-quantity').innerHTML = wishList.length;
+        
+        let bag = JSON.parse(localStorage.getItem('bag')) || [];
+        document.querySelector('.js-bag-quantity').innerHTML = bag.length;
+     </script>
      <!-- UIkit JS -->
      <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit.min.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit-icons.min.js"></script>
