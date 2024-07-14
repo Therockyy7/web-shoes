@@ -1,20 +1,18 @@
 <%-- 
-    Document   : all
-    Created on : Jun 22, 2024, 6:35:15 PM
+    Document   : sneaker
+    Created on : Jul 11, 2024, 5:55:34 PM
     Author     : LENOVO
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.util.Locale"%>
 <%@page import="model.Products"%>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-    <title>Tất cả sản phẩm</title>
+    <title>Sneaker | shopping</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -145,9 +143,9 @@
     <!-- List item -->
      <div class="list-Item">
         <div class="list-tab row">
-            <a class="col-sm border border-dark text-center text-light bg-dark bg-gradient" href="AllServlet?action=listAl">Tất cả giày</a>
+            <a class="col-sm border border-dark text-center " href="AllServlet?action=listAll">Tất cả giày</a>
             <a class="col-sm border border-dark text-center" href="include/newArrival.jsp">Hàng mới về</a>
-            <a class="col-sm border border-dark text-center" href="AllServlet?action=ShowSneaker"> Giày Sneaker</a>
+            <a class="col-sm border border-dark text-center text-light bg-dark bg-gradient" href="include/newArrival.jsp"> Giày Sneaker</a>
         </div>
 
         <div class="tab-content pt-5" id="tab-content">
@@ -157,7 +155,7 @@
                        
                      <%
                           
-                                ArrayList<Products> list = (ArrayList<Products>) request.getAttribute("list");
+                                ArrayList<Products> list = (ArrayList<Products>) request.getAttribute("listSneaker");
                                 
                                 
                                 for(Products item : list){

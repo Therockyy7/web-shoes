@@ -82,6 +82,9 @@ public class AllServlet extends HttpServlet {
             case "showItem":
                 doListItem(request,response);
                 break;
+            case "ShowSneaker":
+                doListSneaker(request,response);
+                break;
             default:
                 throw new AssertionError();
         }
@@ -143,6 +146,26 @@ public class AllServlet extends HttpServlet {
             request.setAttribute("product", products);
             request.getRequestDispatcher("include/card.jsp").forward(request, response);
         } catch (Exception ex) {
+            Logger.getLogger(AllServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void doListSneaker(HttpServletRequest request, HttpServletResponse response) {
+          try {
+             ArrayList<Products> list = ProductsDB.listAll();
+             ArrayList<Products> listSneaker = new ArrayList<>();
+             
+             for(Products pro : list){
+                 if(pro.getBrand().equals("Nike")){
+                     listSneaker.add(pro);
+                 }
+             }
+             
+             request.setAttribute("listSneaker", listSneaker);
+            request.getRequestDispatcher("include/sneaker.jsp").forward(request, response);
+        } catch (ServletException ex) {
+            Logger.getLogger(AllServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(AllServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
