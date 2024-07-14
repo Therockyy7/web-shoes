@@ -31,8 +31,8 @@ public class LoginServlet extends HttpServlet {
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("user", u);  // Store the whole user object
-            if ("admin".equals(u.getRole())) {
-                response.sendRedirect("adminPage.jsp");
+            if ("Admin".equalsIgnoreCase(u.getRole())) {
+                response.sendRedirect("admin/adminPage.jsp");
             } else {
                 response.sendRedirect("index.jsp");
             }

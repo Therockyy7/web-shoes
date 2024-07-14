@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class UserDB implements DatabaseInfo {
 
@@ -83,7 +84,9 @@ public class UserDB implements DatabaseInfo {
                 String Username = rs.getString("Username");
                 String Password = rs.getString("Password");
                 String Email = rs.getString("Email");
-                User user = new User(user_id, Username, Email, Password);
+                String Phone = rs.getString("Phone");
+                String Address = rs.getString("Address");
+                User user = new User(user_id, Username, Email, Password, Phone, Address);
                 userList.add(user);
             }
             rs.close();
@@ -92,6 +95,99 @@ public class UserDB implements DatabaseInfo {
             e.printStackTrace();
         }
         return userList;
+    }
+
+    public static boolean addUser(User user) {
+        try (Connection con = getConnect()) {
+            // Check if the user already exists
+            if (userExists(user.getEmail())) {
+                System.out.println("User already exists");
+                return false;
+            }
+
+            // Insert user into the Users table
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO Users (Username, Email, Password, Address, Phone) VALUES (?, ?, ?, ?, ?)");
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getAddress());
+            stmt.setString(5, user.getPhone());
+
+            int rowsAffected = stmt.executeUpdate();
+            stmt.close();
+
+            // Check and return success or failure
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean deleteUser(int userId) {
+        try (Connection con = getConnect()) {
+            // Xóa người dùng từ bảng Users
+            PreparedStatement stmt = con.prepareStatement("DELETE FROM Users WHERE UserID = ?");
+            stmt.setInt(1, userId);
+
+            int rowsAffected = stmt.executeUpdate();
+            stmt.close();
+
+            // Kiểm tra và trả về kết quả xóa thành công hay không
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean updateUser(User user) {
+        try (Connection con = getConnect()) {
+            // Cập nhật thông tin người dùng trong bảng Users
+            PreparedStatement stmt = con.prepareStatement("UPDATE Users SET Username = ?, Password = ?, Email = ? WHERE UserID = ?");
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getPassword());
+            stmt.setString(3, user.getEmail());
+            stmt.setInt(4, user.getUserId());
+
+            int rowsAffected = stmt.executeUpdate();
+            stmt.close();
+
+            // Kiểm tra và trả về kết quả cập nhật thành công hay không
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public static User getUserById(int userId) {
+        User user = null;
+        String sql = "SELECT * FROM users WHERE userId = ?";
+        
+        try (
+            Connection con = getConnect();
+            PreparedStatement stmt = con.prepareStatement(sql);
+        ) {
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                // Assuming User class has constructor matching columns
+                user = new User(
+                    rs.getInt("userId"),
+                    rs.getString("username"),
+                    rs.getString("password"),
+                    rs.getString("email"),
+                    rs.getString("address"),
+                    rs.getString("phone")
+                );
+            }
+        } catch (SQLException ex) {
+            // Handle any SQL exceptions
+            ex.printStackTrace();
+        }
+
+        return user;
     }
 
     public static void main(String[] a) {

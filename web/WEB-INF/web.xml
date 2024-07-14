@@ -49,6 +49,14 @@
         <servlet-name>CheckOutServlet</servlet-name>
         <servlet-class>controller.CheckOutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>managementUser</servlet-name>
+        <servlet-class>controller.managementUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/SearchServlet</url-pattern>
@@ -88,6 +96,22 @@
     <servlet-mapping>
         <servlet-name>CheckOutServlet</servlet-name>
         <url-pattern>/CheckOutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/admin/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>managementUser</servlet-name>
+        <url-pattern>/managementUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>managementUser</servlet-name>
+        <url-pattern>/admin/managementUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
