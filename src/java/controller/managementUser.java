@@ -2,13 +2,11 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import model.User;
 import model.UserDB;
 
@@ -73,6 +71,7 @@ public class managementUser extends HttpServlet {
         if (username == null || username.isEmpty() || password == null || password.isEmpty() || email == null || email.isEmpty()) {
             // Handle validation error
             // You can redirect back to the add user page with an error message
+                
             response.sendRedirect("addUser.jsp?error=missingFields");
             return;
         }
@@ -108,16 +107,18 @@ public class managementUser extends HttpServlet {
         String newUsername = request.getParameter("newUsername");
         String newPassword = request.getParameter("newPassword");
         String newEmail = request.getParameter("newEmail");
-        String newAddress = request.getParameter("newAddress");
         String newPhone = request.getParameter("newPhone");
+        String newAddress = request.getParameter("newAddress");
 
         // Perform validation if needed
         // Update user in the database
-        User updatedUser = new User(userId, newUsername, newPassword, newEmail, newAddress, newPhone);
-        UserDB.updateUser(updatedUser);
+         boolean success = UserDB.updateUser(new User(userId, newUsername, newPassword, newEmail, newPhone, newAddress));
 
-        // Redirect or forward to appropriate page after updating user
-        response.sendRedirect("userManagement.jsp"); // Example redirection
+        f (success) {
+            response.sendRedirect("userManagement.jsp"); // Redirect to user management page upon success
+        } else {
+            response.sendRedirect("updateUser.jsp?error=dbError"); // Handle database error case
+        }
     }
 
     @Override

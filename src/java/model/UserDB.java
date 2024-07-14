@@ -1,16 +1,11 @@
 package model;
 
-import static model.DatabaseInfo.DBURL;
-import static model.DatabaseInfo.DRIVERNAME;
-import static model.DatabaseInfo.PASSDB;
-import static model.DatabaseInfo.USERDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class UserDB implements DatabaseInfo {
 
@@ -32,7 +27,8 @@ public class UserDB implements DatabaseInfo {
     public static User login(String email, String password) {
         User user = null;
         try (Connection con = getConnect()) {
-            PreparedStatement stmt = con.prepareStatement("SELECT UserID, Username, Password, Email FROM Users WHERE Email=? AND Password=?");
+            PreparedStatement stmt = con.prepareStatement(
+                    "SELECT UserID, Username, Password, Email FROM Users WHERE Email=? AND Password=?");
             stmt.setString(1, email);
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
@@ -41,7 +37,8 @@ public class UserDB implements DatabaseInfo {
                 String username = rs.getString("Username");
                 user = new User(userId, username, email, password);
 
-                PreparedStatement roleStmt = con.prepareStatement("SELECT r.Name FROM UserRoles ur JOIN Roles r ON ur.RoleID = r.RoleID WHERE ur.UserID=?");
+                PreparedStatement roleStmt = con.prepareStatement(
+                        "SELECT r.Name FROM UserRoles ur JOIN Roles r ON ur.RoleID = r.RoleID WHERE ur.UserID=?");
                 roleStmt.setInt(1, userId);
                 ResultSet roleRs = roleStmt.executeQuery();
                 if (roleRs.next()) {
@@ -106,7 +103,8 @@ public class UserDB implements DatabaseInfo {
             }
 
             // Insert user into the Users table
-            PreparedStatement stmt = con.prepareStatement("INSERT INTO Users (Username, Email, Password, Address, Phone) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement stmt = con.prepareStatement(
+                    "INSERT INTO Users (Username, Email, Password, Address, Phone) VALUES (?, ?, ?, ?, ?)");
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());
             stmt.setString(3, user.getPassword());
@@ -144,11 +142,14 @@ public class UserDB implements DatabaseInfo {
     public static boolean updateUser(User user) {
         try (Connection con = getConnect()) {
             // Cập nhật thông tin người dùng trong bảng Users
-            PreparedStatement stmt = con.prepareStatement("UPDATE Users SET Username = ?, Password = ?, Email = ? WHERE UserID = ?");
+            PreparedStatement stmt = con.prepareStatement(
+                    "UPDATE Users SET Username = ?, Password = ?, Email = ?, Phone = ?, Address = ? WHERE UserID = ?");
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getPassword());
             stmt.setString(3, user.getEmail());
-            stmt.setInt(4, user.getUserId());
+            stmt.setString(4, user.getPhone());
+            stmt.setString(5, user.getAddress());
+            stmt.setInt(6, user.getUserId());
 
             int rowsAffected = stmt.executeUpdate();
             stmt.close();
@@ -160,27 +161,26 @@ public class UserDB implements DatabaseInfo {
         }
         return false;
     }
+
     public static User getUserById(int userId) {
         User user = null;
         String sql = "SELECT * FROM users WHERE userId = ?";
-        
+
         try (
-            Connection con = getConnect();
-            PreparedStatement stmt = con.prepareStatement(sql);
-        ) {
+                Connection con = getConnect();
+                PreparedStatement stmt = con.prepareStatement(sql);) {
             stmt.setInt(1, userId);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
                 // Assuming User class has constructor matching columns
                 user = new User(
-                    rs.getInt("userId"),
-                    rs.getString("username"),
-                    rs.getString("password"),
-                    rs.getString("email"),
-                    rs.getString("address"),
-                    rs.getString("phone")
-                );
+                        rs.getInt("userId"),
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getString("email"),
+                        rs.getString("phone"),
+                        rs.getString("address"));
             }
         } catch (SQLException ex) {
             // Handle any SQL exceptions

@@ -3,9 +3,9 @@
 <%@ page import="model.User, model.UserDB" %>
 <%
     // Retrieve user ID from request parameter
-    String userIdStr = request.getParameter("userId");
-    int userId = Integer.parseInt(userIdStr);
-    
+    String userIdParam = request.getParameter("userId");
+int userId = userIdParam != null ? Integer.parseInt(userIdParam) : 0; // Or any default value
+
     // Fetch user details from the database based on userID
     User user = UserDB.getUserById(userId);
 %>
@@ -70,23 +70,23 @@
         <div class="container mt-5">
             <h2>Update User</h2>
             <form action="managementUser" method="post">
-                <input type="hidden" name="action" value="update">
-                <input type="hidden" name="userId" value="<%= user.getUserId() %>">
+                <input type="hidden" name="action" value="updateUser">
+                <input type="hidden" name="userId" value="<%= (user != null ? user.getUserId() : "") %>">
 
                 <label for="username">Username:</label><br>
-                <input type="text" id="username" name="newUsername" value="<%= user.getUsername() %>" required><br><br>
+                <input type="text" id="username" name="newUsername" value="<%= (user != null ? user.getUsername() : "") %>" required><br><br>
 
                 <label for="password">Password:</label><br>
-                <input type="password" id="password" name="newPassword" value="<%= user.getPassword() %>" required><br><br>
+                <input type="password" id="password" name="newPassword" value="<%= (user != null ? user.getPassword() : "") %>" required><br><br>
 
                 <label for="email">Email:</label><br>
-                <input type="email" id="email" name="newEmail" value="<%= user.getEmail() %>" required><br><br>
+                <input type="email" id="email" name="newEmail" value="<%= (user != null ? user.getEmail() : "") %>" required><br><br>
 
                 <label for="phone">Phone:</label><br>
-                <input type="text" id="phone" name="newPhone" value="<%= user.getPhone() %>"><br><br>
+                <input type="text" id="phone" name="newPhone" value="<%= (user != null ? user.getPhone() : "") %>" required><br><br>
 
                 <label for="address">Address:</label><br>
-                <input type="text" id="address" name="newAddress" value="<%= user.getAddress() %>"><br><br>
+                <input type="text" id="address" name="newAddress" value="<%= (user != null ? user.getAddress() : "") %>" required><br><br>
 
                 <button type="submit" class="update-user-button">Update User</button>
             </form>

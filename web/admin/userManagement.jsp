@@ -101,10 +101,11 @@
                             <button type="submit">Delete</button>
                         </form>
                         <form action="updateUser.jsp" method="post">
-                            <input type="hidden" name="action" value="updateUser">
                             <input type="hidden" name="userId" value="<%= user.getUserId() %>">
-                            <button type="submit" class="update-user-button">Update</button>
+                            <!-- Other input fields for updating user information -->
+                            <button type="submit">Update</button>
                         </form>
+
                     </td>
                 </tr>
                 <%}%>
