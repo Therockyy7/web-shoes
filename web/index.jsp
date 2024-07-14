@@ -31,9 +31,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <link rel="stylesheet" href="style/list-color.css">
         <link rel="stylesheet" href="style/footer.css">
         <link rel="stylesheet" href="style/panel.css">
+        <link rel="stylesheet" href="style/loading.css">
     </head>
 
     <body>
+
         <!-- Header -->
         <div class="header">
             <div class="head">
@@ -89,7 +91,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <ul>
                                 <li><a href="include/nam.jsp">Nam</a></li>
                                 <li><a href="include/nu.jsp">Nữ</a></li>
-                                <li><a href="include/discount.jsp">Giảm giá</a></li>
+                                <!--<li><a href="include/discount.jsp">Giảm giá</a></li>-->
                                 <li><a href="AllServlet?action=listAll">Tất cả</a></li>
                             </ul>
                         </nav>
@@ -356,22 +358,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <div class="container-poster">
                         <img src="image/076cc0969868ecd40bc47aa9291796e1.jpg" alt="@">
 
-                        <form style="width: 26rem;">
+                        <form action="SendEmailOrder" method="post" style="width: 26rem;">
+                            <input type="hidden" name="action" value="sendEmail" />
                             <!-- Name input -->
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="text" id="form4Example1" class="form-control" />
+                                <input type="text" id="form4Example1" class="form-control" name="name"/>
                                 <label class="form-label" for="form4Example1">Name</label>
                             </div>
 
                             <!-- Email input -->
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="email" id="form4Example2" class="form-control" />
+                                <input type="email" id="form4Example2" class="form-control" name="email" />
                                 <label class="form-label" for="form4Example2">Email address</label>
                             </div>
 
                             <!-- Message input -->
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+                                <textarea class="form-control" id="form4Example3" rows="4" name="message"></textarea>
                                 <label class="form-label" for="form4Example3">Message</label>
                             </div>
 
@@ -384,7 +387,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             </div>
 
                             <!-- Submit button -->
-                            <button data-mdb-ripple-init type="button" class="btn btn-block mb-4">Send</button>
+                            <button data-mdb-ripple-init type="submit" class="btn btn-block mb-4">Send</button>
                         </form>
 
                         <video class="poster-video" src="video/b393da5084a0c6fc6028535f7b382111.mp4" loop muted autoplay></video>
@@ -717,6 +720,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
            
        
     </script>
+    <script src="js/loading.js"></script>
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit-icons.min.js"></script>

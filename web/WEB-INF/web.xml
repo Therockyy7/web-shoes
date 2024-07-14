@@ -8,6 +8,7 @@
         <filter-name>CheckLoginFilter</filter-name>
         <url-pattern>/shopBag.jsp</url-pattern>
         <url-pattern>/CheckOutServlet</url-pattern>
+        <url-pattern>/SendEmailOrder</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>SearchServlet</servlet-name>
@@ -52,10 +53,13 @@
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>controller.LogoutServlet</servlet-class>
-    </servlet>
-    <servlet>
+    </servlet>    
         <servlet-name>managementUser</servlet-name>
         <servlet-class>controller.managementUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SendEmailOrder</servlet-name>
+        <servlet-class>controller.SendEmailOrder</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
@@ -112,6 +116,10 @@
     <servlet-mapping>
         <servlet-name>managementUser</servlet-name>
         <url-pattern>/admin/managementUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendEmailOrder</servlet-name>
+        <url-pattern>/SendEmailOrder</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

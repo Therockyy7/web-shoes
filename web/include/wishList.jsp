@@ -86,7 +86,7 @@
                         <ul>
                             <li><a href="include/nam.jsp">Nam</a></li>
                             <li><a href="include/nu.jsp">Nữ</a></li>
-                            <li><a href="include/discount.jsp">Giảm giá</a></li>
+                            <!--<li><a href="include/discount.jsp">Giảm giá</a></li>-->
                             <li><a href="AllServlet?action=listAll">Tất cả</a></li>
                         </ul>
                     </nav>
