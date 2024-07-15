@@ -37,6 +37,20 @@ public class Products {
         this.stockQuantity = stockQuantity;
         this.manufacturerID = manufacturerID;
     }
+    
+    public Products(int productID, String name, String brand, int categoryID, double price, String description, String imageURL, int stockQuantity, int manufacturerID, String size) {
+        this.productID = productID;
+        this.name = name;
+        this.brand = brand;
+        this.categoryID = categoryID;
+        this.price = price;
+        this.description = description;
+        this.imageURL = imageURL;
+        this.stockQuantity = stockQuantity;
+        this.manufacturerID = manufacturerID;
+        this.size = size;
+    }
+    
 
     public Products(int productID, String name, String brand, int categoryID, double price, String description, String imageURL, int stockQuantity, int manufacturerID, String size, String gender) {
         this.productID = productID;
@@ -52,6 +66,20 @@ public class Products {
         this.gender = gender;
     }
 
+    public Products(String name, String brand, int categoryID, double price, String description, String imageURL, int stockQuantity, int manufacturerID, String size, String gender) {
+        this.name = name;
+        this.brand = brand;
+        this.categoryID = categoryID;
+        this.price = price;
+        this.description = description;
+        this.imageURL = imageURL;
+        this.stockQuantity = stockQuantity;
+        this.manufacturerID = manufacturerID;
+        this.size = size;
+        this.gender = gender;
+    }
+
+    
     
     // Getters and setters...
 
