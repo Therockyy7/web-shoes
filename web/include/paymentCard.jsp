@@ -20,13 +20,13 @@
                         <div class="step">
                             <div>
                                 <span>SHIPPING</span>
-                                <p name="userName">User name: ${userName}</p>
-                                <p>Email: ${email}</p>
-                                <p>Phone: ${phone}</p>
-                                <p>Address 1: ${address}</p>
-                                <p>Address 2: ${address2}</p>
-                                <p>Country: ${country}</p>
-                                <p>Zip: ${zip}</p>
+                                <p>User name: <input name="userNameP" value="${userName}"style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;"/></p>
+                                <p>Email: <input name="emailP" value="${email}" style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;"/></p>
+                                <p>Phone: <input name="phoneP" value="${phone}"style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;"/></p>
+                                <p>Address 1:<input name="addressP" value="${address}"style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;"/> </p>
+                                <p>Address 2: <input name="addressP2" value="${address2}" style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;"/></p>
+                                <p>Country: <input name="countryP" value="${country}"style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;" /></p>
+                                <p>Zip:<input name="zipP" value="${zip}"style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;" /></p>
 
                             </div>
                             <hr />
@@ -38,7 +38,6 @@
                                         name="Type"
                                         placeholder="Enter type (Credit/Debit)"
                                         class="input_field"
-                                        value=""
                                         required
                                         />
                                     <input
@@ -130,55 +129,3 @@
     </body>
 </html>
 
-<!--<hr class="mb-4">-->
-<!--<h4 class="mb-3">Payment</h4>
-
-        <div class="d-block my-3">
-            <div class="custom-control custom-radio">
-                <input id="credit" name="cardType" type="radio" class="custom-control-input" checked required>
-                <label class="custom-control-label" for="credit">Credit card</label>
-            </div>
-            <div class="custom-control custom-radio">
-                <input id="debit" name="cardType" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label" for="debit">Debit card</label>
-            </div>
-                                        <div class="custom-control custom-radio">
-                                          <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                                          <label class="custom-control-label" for="paypal">PayPal</label>
-                                        </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="cc-name">Name on card</label>
-                <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                <small class="text-muted">Full name as displayed on card</small>
-                <div class="invalid-feedback">
-                    Name on card is required
-                </div>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="cc-number">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                <div class="invalid-feedback">
-                    Credit card number is required
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 mb-3">
-                <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                <div class="invalid-feedback">
-                    Expiration date required
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <label for="cc-cvv">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                <div class="invalid-feedback">
-                    Security code required
-                </div>
-            </div>
-        </div>
-        <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">PAY</button>-->

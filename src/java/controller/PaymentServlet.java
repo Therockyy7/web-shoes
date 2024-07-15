@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Email;
 import model.PayMethodsDB;
 
 /**
@@ -59,24 +60,35 @@ public class PaymentServlet extends HttpServlet {
         processRequest(request, response);
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String userName = request.getParameter("userNameP");
+        String email = request.getParameter("emailP");
+        String phone = request.getParameter("phoneP");
+        String address = request.getParameter("addressP");
+        String address2 = request.getParameter("addressP2");
+        String country = request.getParameter("countryP");
+        String zip = request.getParameter("zipP");
+
         String paymentMethod = request.getParameter("Type");
-        String cardHolderName = request.getParameter("userName");
+        String cardHolderName = request.getParameter("userNameP");
         String cardNumber = request.getParameter("CardNumber");
-        String expirationDate = request.getParameter("ExpirationDate");
+        String expirationDate = request.getParameter("Expiration");
+        PrintWriter out = response.getWriter();
 
         response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-       
+
         // Perform card validation
         PayMethodsDB pmd = new PayMethodsDB();
         boolean isValidCard = pmd.checkPaymentCard(paymentMethod, cardHolderName, cardNumber, expirationDate);
 
-        if (isValidCard) {
-            // Card is valid, display success message and redirect to index.jsp
+        if (isValidCard || paymentMethod == null) {
+            // Card is valid, display success message, SEND EMAIL redirect to index.jsp
+            Email emailSender = new Email();
+            emailSender.sendOrderMail(email, userName, phone, address, address2, country, zip);
             out.println("<script>alert('Payment successful!'); window.location.href='index.jsp';</script>");
         } else {
             // Card is not valid, display error message and redirect to ShowAddToBag?action=showBag

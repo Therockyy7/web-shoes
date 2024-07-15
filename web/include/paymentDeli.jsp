@@ -13,7 +13,7 @@
     </head>
     <body>  
         <div class="container">
-            <form action="SendEmailOrder" method="post">
+            <form action="PaymentServlet" method="post">
 
                 <div class="card cart">
                     <label class="title">PAYMENT ON DELIVERED</label>
@@ -21,13 +21,14 @@
                         <div class="step">
                             <div>
                                 <span>SHIPPING</span>
-                                <p>User name: ${userName}</p>
-                                <p>Email: ${email}</p>
-                                <p>Phone: ${phone}</p>
-                                <p>Address 1: ${address}</p>
-                                <p>Address 2: ${address2}</p>
-                                <p>Country: ${country}</p>
-                                <p>Zip: ${zip}</p>
+                                <p>User name: <input name="userNameP" value="${userName}"style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;"/></p>
+                                <p>Email: <input name="emailP" value="${email}" style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;"/></p>
+                                <p>Phone: <input name="phoneP" value="${phone}"style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;"/></p>
+                                <p>Address 1:<input name="addressP" value="${address}"style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;"/> </p>
+                                <p>Address 2: <input name="addressP2" value="${address2}" style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;"/></p>
+                                <p>Country: <input name="countryP" value="${country}"style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;" /></p>
+                                <p>Zip:<input name="zipP" value="${zip}"style="border: none; background-color: transparent; color: #000000; font-size: 13px; font-weight: 600;" /></p>
+
 
                             </div>
                             <hr />
