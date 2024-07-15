@@ -114,7 +114,7 @@ public class managementUser extends HttpServlet {
         // Update user in the database
          boolean success = UserDB.updateUser(new User(userId, newUsername, newPassword, newEmail, newPhone, newAddress));
 
-        f (success) {
+        if (success) {
             response.sendRedirect("userManagement.jsp"); // Redirect to user management page upon success
         } else {
             response.sendRedirect("updateUser.jsp?error=dbError"); // Handle database error case

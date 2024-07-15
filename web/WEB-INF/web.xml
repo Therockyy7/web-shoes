@@ -53,7 +53,8 @@
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>controller.LogoutServlet</servlet-class>
-    </servlet>    
+    </servlet>
+    <servlet>    
         <servlet-name>managementUser</servlet-name>
         <servlet-class>controller.managementUser</servlet-class>
     </servlet>
