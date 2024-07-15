@@ -393,159 +393,71 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         <video class="poster-video" src="video/b393da5084a0c6fc6028535f7b382111.mp4" loop muted autoplay></video>
                     </div>
 
+                    //collection
                     <div class="container-list-color">
                         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active" data-bs-interval="10000">
                                     <div class="row row-cols-1 row-cols-md-4 g-4">
                                         <div class="col">
-                                            <div class="card h-100">
-                                                <video class="card-img-top"
-                                                       src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_400,w_400/tennis_ss24_roland_garros_launch_glpw_teaser_card_d_f15268b651.mp4"
-                                                       muted autoplay></video>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                                                        additional content. This content is a little bit longer.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100">
-                                                <video class="card-img-top"
-                                                       src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_400,w_400/glbl_aclubs_fcbayern_home_football_ss24_launch_onsite_tcc_d_dc8fb7d52c.mp4"
-                                                       muted autoplay></video>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">This is a short card.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100">
+                                            <div class="card h-100 uk-card-hover">
+                                                <a class="text-decoration-none text-dark" href="listCollection?collectionID=1">
                                                 <img
-                                                    src="https://brand.assets.adidas.com/image/upload/f_gif,fl_lossy,q_auto/4440718_Onsite_SS_24_TIRO_Teaser_Carousel_1050x1400_9a4aaae240.gif"
-                                                    class="card-img-top" alt="...">
-
+                                                    src="https://tinyurl.com/yezj9y3n"
+                                                    class="card-img-top" alt="Advancement Pack">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                                                        additional content.</p>
+                                                    <h5 class="card-title">Advancement Pack</h5>
+                                                    <p class="card-text">Khám phá giày F50, Predator và Copa mới.</p>
                                                 </div>
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="card h-100">
-                                                <video class="card-img-top"
-                                                       src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_400,w_400/football_fw24_f50_launch_hp_teaser_carousel_animated_d_a21571d8ad.mp4"
-                                                       muted autoplay></video>
+                                            <div class="card h-100 uk-card-hover">
+                                                <a class="text-decoration-none text-dark" href="listCollection?collectionID=2">
+                                                <img
+                                                    src="https://tinyurl.com/ykmpmykr"
+                                                    class="card-img-top" alt="The 80s Collection">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">The 80's Collection</h5>
+                                                    <p class="card-text">Sẵn sàng tái hiện phong cách retro.</p>
+                                                </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card h-100 uk-card-hover">
+                                                <a class="text-decoration-none text-dark" href="listCollection?collectionID=3">
+                                                <img
+                                                    src="https://tinyurl.com/vk3t7pu5"
+                                                    class="card-img-top" alt="Song for the Mute">
 
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                                                        additional content. This content is a little bit longer.</p>
+                                                    <h5 class="card-title">Song for the Mute</h5>
+                                                    <p class="card-text">Khám phá bộ sưu tập mới gợi nhớ về hoài niệm tương lai.</p>
                                                 </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card h-100 uk-card-hover">
+                                                <a class="text-decoration-none text-dark" href="listCollection?collectionID=4">
+                                                <img 
+                                                    src="https://tinyurl.com/bddsc35c"
+                                                    class="card-img-top" alt="D.O.N. Issue #6">
+
+                                                <div class="card-body">
+                                                    <h5 class="card-title">D.O.N. Issue #6</h5>
+                                                    <p class="card-text">Đôi giày hiệu năng đặc trưng đến từ Donovan Mitchell.</p>
+                                                </div>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="carousel-item" data-bs-interval="2000">
-                                    <div class="row row-cols-1 row-cols-md-4 g-4">
-                                        <div class="col">
-                                            <div class="card h-100">
-                                                <video class="card-img-top"
-                                                       src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_400,w_400/glbl_aclubs_realmadrid_home_football_ss24_launch_onsite_tcc_03_o_984a2290bd.mp4"
-                                                       muted autoplay></video>
-
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                                                        additional content. This content is a little bit longer.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100">
-                                                <img
-                                                    src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_400,w_400/4554197_Teaser_Carousel_1050x1400_bfb48c6d9e.jpg"
-                                                    class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">This is a short card.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100">
-                                                <img
-                                                    src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_400,w_400/fw24_sftm_tc_d_af448e3367.jpg"
-                                                    class="card-img-top" alt="...">
-
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                                                        additional content.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100">
-                                                <img
-                                                    src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_400,w_400/4548494_CAM_Onsite_FW_24_ECOM_Star_Wars_Nanzuka_and_Disney_12_June_SEA_Teaser_Carousel_1050x1400_cfbd628f18.jpg"
-                                                    class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                                                        additional content. This content is a little bit longer.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row row-cols-1 row-cols-md-4 g-4">
-                                        <div class="col">
-                                            <div class="card h-100">
-                                                <img src="image/jordan.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                                                        additional content. This content is a little bit longer.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100">
-                                                <img src="image/jordan.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">This is a short card.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100">
-                                                <img src="image/jordan.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                                                        additional content.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100">
-                                                <img src="image/jordan.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                                                        additional content. This content is a little bit longer.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div>                                                             
                             </div>
+                            
+                            
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
                                     data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
