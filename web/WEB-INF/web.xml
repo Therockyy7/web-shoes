@@ -54,13 +54,17 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>controller.LogoutServlet</servlet-class>
     </servlet>
-    <servlet>    
+    <servlet>
         <servlet-name>managementUser</servlet-name>
         <servlet-class>controller.managementUser</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SendEmailOrder</servlet-name>
         <servlet-class>controller.SendEmailOrder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListCollectionServlet</servlet-name>
+        <servlet-class>controller.ListCollectionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
@@ -121,6 +125,10 @@
     <servlet-mapping>
         <servlet-name>SendEmailOrder</servlet-name>
         <url-pattern>/SendEmailOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListCollectionServlet</servlet-name>
+        <url-pattern>/listCollection</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
