@@ -11,6 +11,8 @@ public class User implements Serializable {
     private String phone;
     private String address;
     private String role;
+    private String registrationDate;
+    private String lastLogin;
 
     // Constructors
     public User() {
@@ -22,7 +24,40 @@ public class User implements Serializable {
         this.email = email;
         this.password = password;
     }
-
+    
+    public User(int userId, String username, String email, String password, String role, String address, String phone, String registrationDate, String lastLogin) {
+        this.userId = userId;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.address = address;
+        this.phone = phone;
+        this.registrationDate = registrationDate;
+        this.lastLogin = lastLogin;
+    }
+    
+    public User(String username, String email, String password, String role, String address, String phone, String registrationDate, String lastLogin) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.phone = phone;
+        this.address = address;
+        this.phone = phone;
+        this.registrationDate = registrationDate;
+        this.lastLogin = lastLogin;
+    }
+    public User(String username, String email, String password, String address, String phone, String registrationDate, String lastLogin) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.phone = phone;
+        this.registrationDate = registrationDate;
+        this.lastLogin = lastLogin;
+    }
+    
     public User( String username, String password, String email, String phone, String address) {
         
         this.username = username;
@@ -97,14 +132,35 @@ public class User implements Serializable {
         this.address = address;
     }
 
+    public String getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(String registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public String getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(String lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
     @Override
     public String toString() {
-        return "User{"
-                + "userId=" + userId
-                + ", username='" + username + '\''
-                + ", email='" + email + '\''
-                + ", password='" + password + '\''
-                + ", role='" + role + '\''
-                + '}';
+        return "User{" + "userId=" + userId 
+                + ", username=" + username 
+                + ", email=" + email 
+                + ", password=" + password 
+                + ", phone=" + phone 
+                + ", address=" + address 
+                + ", role=" + role 
+                + ", registrationDate=" + registrationDate 
+                + ", lastLogin=" + lastLogin + '}';
     }
+    
+
+   
 }
