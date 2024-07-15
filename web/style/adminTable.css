@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.tableAdmin {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tableAdmin th, .tableAdmin td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tableAdmin th {
+    background-color: #f2f2f2;
+}
+
+.tableAdmin td form {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.tableAdmin td form button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.tableAdmin td form button:hover {
+    background-color: #cc0000;
+}
+
+.tableAdmin td form button[type="submit"] {
+    background-color: #4CAF50;
+}
+
+.tableAdmin td form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.tableAdmin td form {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.tableAdmin td form button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.tableAdmin td form button:hover {
+    background-color: #cc0000;
+}
+
+.tableAdmin td form button[type="submit"] {
+    background-color: #4CAF50;
+}
+
+.tableAdmin td form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.tableAdmin td form {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.tableAdmin td form button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.tableAdmin td form button:hover {
+    background-color: #cc0000;
+}
+
+.tableAdmin td form button[type="submit"] {
+    background-color: #4CAF50;
+}
+
+.tableAdmin td form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.tableAdmin td form {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.tableAdmin td form button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.tableAdmin td form button:hover {
+    background-color: #cc0000;
+}
+
+.tableAdmin td form button[type="submit"] {
+    background-color: #4CAF50;
+}
+
+.tableAdmin td form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.tableAdmin td form {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.tableAdmin td form button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.tableAdmin td form button:hover {
+    background-color: #cc0000;
+}
+
+.tableAdmin td form button[type="submit"] {
+    background-color: #4CAF50;
+}
+
+.tableAdmin td form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+.add-user-button {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white;
+    padding: 10px 20px; /* Padding inside button */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px; /* Rounded corners */
+}
+
+.add-user-button:hover {
+    background-color: #45a049; /* Darker green when mouse over */
+}

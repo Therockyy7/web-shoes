@@ -7,14 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-//import javax.servlet.ServletException;
-//import javax.servlet.annotation.WebServlet;
-//import javax.servlet.http.HttpServlet;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//import javax.servlet.http.HttpSession;
 
-@WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -23,7 +16,13 @@ public class LogoutServlet extends HttpServlet {
         if (session != null) {
             session.invalidate(); // Hủy session
         }
-        response.sendRedirect("index.jsp"); // Chuyển hướng về trang chủ
+
+        String value = request.getParameter("value");
+        if ("admin".equalsIgnoreCase(value)) {
+            response.sendRedirect("../index.jsp"); // Chuyển hướng về trang chủ của admin
+        } else {
+            response.sendRedirect("index.jsp"); // Chuyển hướng về trang chủ
+        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

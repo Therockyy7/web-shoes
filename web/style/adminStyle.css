@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.middle-section {
+    text-align: center;
+    font-size: 30px;
+}
+
+.navbar .container {
+    display: grid;
+    grid-template-columns: 5fr 5fr 5fr;
+    grid-template-rows: 5rem;
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+p {
+    color: #5F0E25;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 10px;
+    letter-spacing: .05em;
+    text-shadow: 4px 4px 0px #d5d5d5, 7px 7px 0px rgba(0, 0, 0, 0.2);
+    height: 100px;
+}
+
+.navbar {
+    background-color: white;
+    border-bottom: solid 5px #008B8B;
+    border-top: solid 4px black;
+    padding: 10px 0; /* Thêm padding để tăng khoảng cách giữa navbar và nội dung */
+}
+
+.navbar .left-section img {
+    width: 50px;
+}
+
+.navbar .right-section img {
+    width: 50px;
+}
+
+.navbar .right-section {
+    grid-column: 3; /* Đưa right-section xuống cùng hàng với chỉ số cột thứ 3 */
+    display: flex;
+    justify-content: flex-end; /* Căn phải */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    padding-right: 20px; /* Khoảng cách phải */
+}
+
+.icon-logout {
+    height: 30px;
+    vertical-align: middle;
+}
+
+.logout-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.user-info {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    width: 130px;
+}
+
+.user-panel {
+    position: relative;
+}
+
+.user-info table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-info td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* adminStyle.css */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px #000;
+    transition: 0.3s;
+    background-color: #00cccc;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.btn-lg {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+}
+
+.card-body a {
+    color: #5F0E25;
+}
+
