@@ -14,7 +14,106 @@ public class Email {
     
     static final String from = "hoangphucc898@gmail.com";
     static final String password = "lnzcvpkkurgztank"; // Use an app-specific password
+    
+    
+     public static boolean sendOrderMail(String to, String UserName, String Phone, String Address, String Address2, String Country, String Zip) {
+        if (!isValidEmailAddress(to)) {
+            System.out.println("Invalid email address: " + to);
+            return false;
+        }
+        // Properties : khai báo các thuộc tính
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com"); // SMTP HOST
+        props.put("mail.smtp.port", "587"); // TLS port
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true"); // Enable STARTTLS
 
+        // create Authenticator
+        Authenticator auth = new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from, password);
+            }
+        };
+
+        // Phiên làm việc
+        Session session = Session.getInstance(props, auth);
+
+        // Tạo một tin nhắn
+        MimeMessage msg = new MimeMessage(session);
+
+        try {
+            // Kiểu nội dung
+            msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
+
+            // Người gửi
+            msg.setFrom(new InternetAddress(from));
+
+            // Người nhận
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to, false));
+
+            // Tiêu đề email
+            msg.setSubject("Đơn hàng của quý khách đang được gửi đi. Shop xin cảm vì đã ủng hộ ạ <3 ");
+
+            // Quy đinh ngày gửi
+            msg.setSentDate(new Date());
+            // Nội dung
+            msg.setContent("<!DOCTYPE html>\n"
+                    + "<html>\n"
+                    + "    <head>\n"
+                    + "        <meta charset=\"UTF-8\">\n"
+                    + "        <title>Order Confirmation</title>\n"
+                    + "        <style>\n"
+                    + "            body {\n"
+                    + "                font-family: Arial, sans-serif;\n"
+                    + "            }\n"
+                    + "            .container {\n"
+                    + "                max-width: 600px;\n"
+                    + "                margin: 0 auto;\n"
+                    + "                padding: 20px;\n"
+                    + "                background-color: #f5f5f5;\n"
+                    + "            }\n"
+                    + "            h1 {\n"
+                    + "                color: #333333;\n"
+                    + "            }\n"
+                    + "            p {\n"
+                    + "                color: #555555;\n"
+                    + "                margin-bottom: 10px;\n"
+                    + "            }\n"
+                    + "            .highlight {\n"
+                    + "                font-weight: bold;\n"
+                    + "                color: #FF0000;\n"
+                    + "            }\n"
+                    + "        </style>\n"
+                    + "    </head>\n"
+                    + "    <body>\n"
+                    + "        <div class=\"container\">\n"
+                    + "            <h1>Order Details</h1>\n"
+                    + "            <p>User Name: " + UserName + "</p>\n"
+                    + "            <p>Email: " + to + "</p>\n"
+                    + "            <p>Phone: " + Phone + "</p>\n"
+                    + "            <p>Address: " + Address + "</p>\n"
+                    + "            <p>Address: " + Address2 + "</p>\n"
+                    + "            <p>List product:" + "</p>\n"
+                    + "            <p>Product name: ####" + "</p>\n"
+                    + "            <p>Price: ###### VND" + "</p>\n"
+                    + "            <p>Size ##" + "</p>\n"
+                    + "            <p>Total Price:  <span class=\"highlight\">" + "############## VND</span></p>\n"
+                    + "        </div>\n"
+                    + "    </body>\n"
+                    + "</html>", "text/html; charset=UTF-8");
+
+            // Gửi email
+            Transport.send(msg);
+            System.out.println("Gửi email thành công");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Gặp lỗi trong quá trình gửi email");
+            e.printStackTrace();
+            return false;
+        }
+    }
+     
     public static boolean sendEmail(String to, String tieuDe, String noiDung) {
         // Validate the recipient email address
         if (!isValidEmailAddress(to)) {
