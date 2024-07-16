@@ -64,7 +64,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <p>Khi bạn chơi không chút kỳ vọng, áp lực không thể chiếm lĩnh</p>
                 <a href="#">KHÁM PHÁ THÊM</a>
             </div>
-            <video class="video-trailer" src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_1920,w_1920/Training_FW_24_Dropset3_Global_Launch_GLP_Male_Hero_Banner_d_6692aa3301.mp4" loop muted
+            <video class="video-trailer" src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_1920,w_1920/glbl_aclubs_manutd_home_football_ss24_launch_onsite_mh_03_d_38d0dbbc68.mp4" loop muted
                 autoplay data-video-id="2"></video>
             <button class="playPause" data-video-id="2">
                 <i class="situation-video fa fa-play " aria-hidden="true"></i>
