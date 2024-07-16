@@ -29,10 +29,24 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("Password", pass);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", u);  // Store the whole user object
-            if ("Admin".equalsIgnoreCase(u.getRole())) {
-                response.sendRedirect("admin/adminPage.jsp");
+             HttpSession oldSession = request.getSession(false);
+            if (oldSession != null) {
+                oldSession.invalidate();
+            }
+            HttpSession newSession = request.getSession(true);
+            newSession.setAttribute("user", u);  // Store the whole user object
+            
+            // Thêm cookie để lưu trữ thông tin người dùng
+            Cookie emailCookie = new Cookie("userEmail", email);
+            emailCookie.setMaxAge(60 * 60 * 24);  // Thời gian sống của cookie: 1 ngày
+            response.addCookie(emailCookie);
+            
+            Cookie roleCookie = new Cookie("userRole", u.getRole());
+            roleCookie.setMaxAge(60 * 60 * 24);  // Thời gian sống của cookie: 1 ngày
+            response.addCookie(roleCookie);
+
+            if ("Admin".equals(u.getRole())) {
+                response.sendRedirect("adminPage.jsp");
             } else {
                 response.sendRedirect("index.jsp");
             }
