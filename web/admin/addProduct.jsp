@@ -1,12 +1,12 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="java.util.ArrayList"%>
-<%@ page import="model.Products" %>
-<%@ page import="model.ProductsDB" %>
+<%@ page import="model.User" %>
+<%@ page import="model.UserDB" %>
 <%@ page import="java.util.List" %>
 <%
-    ArrayList<Products> products = new ArrayList<>();
-    products = ProductsDB.listAll();
+    ArrayList<User> users = new ArrayList<>();
+    users = UserDB.listAllUsers();
 %>
 <!DOCTYPE html>
 <html>
@@ -22,9 +22,7 @@
         <link rel="shortcut icon" href="../image/logo/logoShop.png" type="image/x-icon">
         <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="../style/header.css">
-        <link rel="stylesheet" href="../style/middle.css">
-        <link rel="stylesheet" href="../style/middle-poster.css">
-        <link rel="stylesheet" href="../style/list-color.css">      
+        <link rel="stylesheet" href="../style/middle.css"> 
         <link rel="stylesheet" href="../style/adminStyle.css">
         <link rel="stylesheet" href="../style/adminTable.css">
     </head>
@@ -69,58 +67,91 @@
 
         <!-- Main Content -->
         <div class="container mt-5">
-            <form action="addProduct.jsp" method="post">
-                <button type="submit" class="add-user-button">Add Product</button>
+            <form action="managementProduct" method="post">
+                <input type="hidden" name="action" value="addProduct">
+
+                <label for="productName">Product Name:</label><br>
+                <input type="text" id="productName" name="productName" required><br><br>
+
+                <label for="brand">Brand:</label><br>
+                <input type="text" id="brand" name="brand" required><br><br>
+
+                <label for="categoryID">Category ID:</label><br>
+                <input type="number" id="categoryID" name="categoryID" required><br><br>
+
+                <label for="price">Price:</label><br>
+                <input type="number" step="0.01" id="price" name="price" required><br><br>
+
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description" required></textarea><br><br>
+
+                <label for="imageURL">Image URL 1:</label><br>
+                <input type="text" id="imageURL" name="imageURL1"><br><br>
+                
+                <label for="imageURL">Image URL 2:</label><br>
+                <input type="text" id="imageURL" name="imageURL2"><br><br>
+                
+                <label for="imageURL">Image URL 3:</label><br>
+                <input type="text" id="imageURL" name="imageURL3"><br><br>
+                
+                <label for="imageURL">Image URL 4:</label><br>
+                <input type="text" id="imageURL" name="imageURL4"><br><br>
+
+                <label for="stockQuantity">Stock Quantity:</label><br>
+                <input type="number" id="stockQuantity" name="stockQuantity" required><br><br>
+
+                <label for="manufacturerID">Manufacturer ID:</label><br>
+                <input type="number" id="manufacturerID" name="manufacturerID" required><br><br>
+
+                <label for="size">Size:</label><br>
+                <input type="text" id="size" name="size"><br><br>
+
+                <label for="gender">Gender:</label><br>
+                <input type="text" id="gender" name="gender"><br><br>
+
+                <button type="submit">Add Product</button>
             </form>
-
-            <table class="tableAdmin">
-                <tr>
-                    <th>ProductID</th>
-                    <th>Name</th>
-                    <th>Brand</th>
-                    <th>CategoryID</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                    <th>ImageURL</th>
-                    <th>StockQuantity</th>
-                    <th>ManufacturerID</th>
-                    <th>Size</th>
-                    <th>Gender</th>
-                    <th>Funciton</th>
-                </tr>
-
-                <%
-                for (Products product : products) {
-                %>
-                <tr>
-                    <td><%= product.getProductID() %></td>
-                    <td><%= product.getName() %></td>
-                    <td><%= product.getBrand() %></td>
-                    <td><%= product.getCategoryID() %></td>
-                    <td><%= product.getPrice() %></td>
-                    <td><%= product.getDescription() %></td>
-                    <td><%= product.getImageURL() %></td>
-                    <td><%= product.getStockQuantity() %></td>
-                    <td><%= product.getManufacturerID() %></td>
-                    <td><%= product.getSize() %></td>
-                    <td><%= product.getGender() %></td>
-                    <td>
-                        <form action="managementProduct" method="post">
-                            <input type="hidden" name="action" value="deleteProduct">
-                            <input type="hidden" name="productID" value="<%= product.getProductID() %>">
-                            <button type="submit">Delete</button>
-                        </form>
-                        <form action="updateProduct.jsp" method="post">
-                            <input type="hidden" name="productID" value="<%= product.getProductID() %>">
-                            <!-- Other input fields for updating user information -->
-                            <button type="submit">Update</button>
-                        </form>
-
-                    </td>
-                </tr>
-                <%}%>
-            </table>
         </div>
+        <style>
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+
+            label {
+                font-weight: bold;
+                margin-bottom: 8px;
+            }
+
+            input[type="text"],
+            input[type="password"],
+            input[type="email"] {
+                padding: 8px;
+                margin-bottom: 16px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+                width: calc(100% - 16px);
+            }
+
+            button[type="submit"] {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin-top: 10px;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+
+            button[type="submit"]:hover {
+                background-color: #45a049;
+            }
+        </style>
 
         <script>
             // Panel user

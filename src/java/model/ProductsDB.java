@@ -78,7 +78,7 @@ public class ProductsDB implements DatabaseInfo {
         }
         return products;
     }
-    
+
     public static Categories getCategoriestById(int Id) throws Exception {
         Categories categories = null;
         String query = "SELECT * FROM Categories WHERE CategoryID = ?";
@@ -90,7 +90,7 @@ public class ProductsDB implements DatabaseInfo {
                 categories.setName(rs.getString("Name"));  // Assuming there's an ID column in Products table
                 categories.setCategoryID(rs.getInt("CategoryID"));
                 categories.setDescription(rs.getString("Description"));
-               
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -98,29 +98,80 @@ public class ProductsDB implements DatabaseInfo {
         }
         return categories;
     }
-    
-    
-     public static ArrayList<Products> listAll(){
-          ArrayList<Products> list= new ArrayList<Products>();
-          //Connection con = getConnect();
-          try(Connection con=getConnectionWithSqlJdbc()) {
-            PreparedStatement stmt=con.prepareStatement("Select ProductID, Name, Brand, CategoryID, Price, Description, ImageURL, StockQuantity, ManufacturerID, Size, Gender from Products");
-            ResultSet  rs=stmt.executeQuery();
-            while(rs.next()){
-                list.add(new Products(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getInt(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getString(10), rs.getString(11)));
+
+    public static ArrayList<Products> listAll() {
+        ArrayList<Products> list = new ArrayList<>();
+        try (Connection con = getConnectionWithSqlJdbc()) {
+            PreparedStatement stmt = con.prepareStatement("SELECT ProductID, Name, Brand, CategoryID, Price, Description, ImageURL, StockQuantity, ManufacturerID, Size, Gender FROM Products");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                list.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getString(10), rs.getString(11)));
             }
-            con.close();
-            return list;
         } catch (Exception ex) {
             Logger.getLogger(ProductsDB.class.getName()).log(Level.SEVERE, null, ex);
-        }   
-          return null;
         }
-     
-      public static void main(String[] a) {
+        return list;
+    }
+
+    public static boolean addProduct(Products product) throws Exception {
+        String query = "INSERT INTO Products (Name, Brand, CategoryID, Price, Description, ImageURL, StockQuantity, ManufacturerID, Size, Gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection connection = getConnectionWithSqlJdbc(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, product.getName());
+            preparedStatement.setString(2, product.getBrand());
+            preparedStatement.setInt(3, product.getCategoryID());
+            preparedStatement.setDouble(4, product.getPrice());
+            preparedStatement.setString(5, product.getDescription());
+            preparedStatement.setString(6, product.getImageURL());
+            preparedStatement.setInt(7, product.getStockQuantity());
+            preparedStatement.setInt(8, product.getManufacturerID());
+            preparedStatement.setString(9, product.getSize());
+            preparedStatement.setString(10, product.getGender());
+            int rowsInserted = preparedStatement.executeUpdate();
+            return rowsInserted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean deleteProduct(int productId) throws Exception {
+        String query = "DELETE FROM Products WHERE ProductID = ?";
+        try (Connection connection = getConnectionWithSqlJdbc(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, productId);
+            int rowsDeleted = preparedStatement.executeUpdate();
+            return rowsDeleted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean updateProduct(Products product) throws Exception {
+        String query = "UPDATE Products SET Name = ?, Brand = ?, CategoryID = ?, Price = ?, Description = ?, ImageURL = ?, StockQuantity = ?, ManufacturerID = ?, Size = ?, Gender = ? WHERE ProductID = ?";
+        try (Connection connection = getConnectionWithSqlJdbc(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, product.getName());
+            preparedStatement.setString(2, product.getBrand());
+            preparedStatement.setInt(3, product.getCategoryID());
+            preparedStatement.setDouble(4, product.getPrice());
+            preparedStatement.setString(5, product.getDescription());
+            preparedStatement.setString(6, product.getImageURL());
+            preparedStatement.setInt(7, product.getStockQuantity());
+            preparedStatement.setInt(8, product.getManufacturerID());
+            preparedStatement.setString(9, product.getSize());
+            preparedStatement.setString(10, product.getGender());
+            preparedStatement.setInt(11, product.getProductID());
+            int rowsUpdated = preparedStatement.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static void main(String[] a) {
         ArrayList<Products> list;
         list = ProductsDB.listAll();
-           
+
         for (Products item : list) {
             System.out.println(item);
         }

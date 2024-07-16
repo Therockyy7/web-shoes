@@ -68,10 +68,11 @@ public class managementUser extends HttpServlet {
 
         // Validate input if needed
         // Example:
-        if (username == null || username.isEmpty() || password == null || password.isEmpty() || email == null || email.isEmpty()) {
+        if (username == null || username.isEmpty() || password == null || password.isEmpty() || email == null
+                || email.isEmpty()) {
             // Handle validation error
             // You can redirect back to the add user page with an error message
-                
+
             response.sendRedirect("addUser.jsp?error=missingFields");
             return;
         }
@@ -112,7 +113,7 @@ public class managementUser extends HttpServlet {
 
         // Perform validation if needed
         // Update user in the database
-         boolean success = UserDB.updateUser(new User(userId, newUsername, newPassword, newEmail, newPhone, newAddress));
+        boolean success = UserDB.updateUser(new User(userId, newUsername, newPassword, newEmail, newPhone, newAddress));
 
         if (success) {
             response.sendRedirect("userManagement.jsp"); // Redirect to user management page upon success
